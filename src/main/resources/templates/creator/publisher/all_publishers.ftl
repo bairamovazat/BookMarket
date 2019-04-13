@@ -1,3 +1,5 @@
+
+
 <#ftl encoding='UTF-8'>
 <!DOCTYPE html>
 <html>
@@ -10,26 +12,28 @@
 
         </div>
         <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xs-6">
+            <div style="text-align: center">
+                <h2>Издательства <a href="create"><button class="btn btn-sm btn-primary">+</button></a></h2>
+            </div>
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Название</th>
-                    <th scope="col">Автор</th>
-                    <th scope="col">Категория</th>
-                    <th scope="col">Издательство</th>
+                    <th scope="col">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
-                <#list model.books as book>
+                <#list model.publishers as publisher>
                 <tr>
-                    <td>${book.name!}</td>
-                    <td>${book.author!}</td>
-                    <td>${book.category???then(book.category.name!, "")}</td>
-                    <td>${book.publisher???then(book.publisher.name!, "")}</td>
+                    <th scope="row"><a href="${'create?id=' + publisher.id}">${publisher.id!}</a></th>
+                    <td>${publisher.name?html}</td>
+                    <td><a href="${'create?id=' + publisher.id}">Изменить</a></td>
                 </tr>
                 </#list>
                 </tbody>
             </table>
+
             <nav aria-label="navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ${((model.currentPage == 0)?string("disabled",""))}">

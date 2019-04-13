@@ -1,18 +1,19 @@
 package ru.ivmiit.web.service;
 
 import org.springframework.transaction.annotation.Transactional;
+import ru.ivmiit.web.forms.PublisherForm;
 import ru.ivmiit.web.model.Book;
-import ru.ivmiit.web.model.BookCategory;
+import ru.ivmiit.web.model.Publisher;
 
 import java.util.List;
 
-public interface BookService {
+public interface PublisherService {
 
     @Transactional
-    List<Book> getBooks(int page);
+    List<Publisher> getPublishers(int page);
 
     @Transactional
-    List<Book> getBooks(int page, int count);
+    List<Publisher> getPublishers(int page, int count);
 
     @Transactional
     List<Integer> getPageList(int currentPage);
@@ -20,5 +21,8 @@ public interface BookService {
     List<Integer> getPageList(int currentPage, int elementsInPage);
 
     @Transactional
-    Book getBook(Long id);
+    Publisher getPublisher(Long id);
+
+    @Transactional
+    void save(PublisherForm publisherForm);
 }
