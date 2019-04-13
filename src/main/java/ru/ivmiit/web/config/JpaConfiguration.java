@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@PropertySource("classpath:application.properties2")
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"ru.ivmiit.web.repository"})
 @ComponentScan(basePackages = "ru.ivmiit.web.model")
