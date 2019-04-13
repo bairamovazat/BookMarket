@@ -19,7 +19,7 @@ public class Book {
 
     private String name;
     private String author;
-    private String pageCount;
+    private Integer pageCount;
     @ManyToOne
     @JoinColumn(name = "title_file_id")
     private File titlePage;
