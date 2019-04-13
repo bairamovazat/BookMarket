@@ -5,10 +5,6 @@
 <body>
 <#include "../header.ftl">
 <style type="text/css">
-    body {
-        font-family: 'Lato', 'sans-serif';
-    }
-
     .profile {
         min-height: 355px;
         display: inline-block;
@@ -100,7 +96,19 @@
                                 <p><strong>Логин: </strong> ${model.user.get().login} </p>
                                 <p><strong>Почта: </strong>${model.user.get().email}</p>
                                 <p><strong>Статус: </strong>${model.user.get().state}</p>
-<#--                                <#if model.user.get().role != "USER">-->
+                                <#if model.user.get().hasRole("CREATOR")>
+                                    <p>
+                                        <strong>Панель модератора: </strong>
+                                        <a href="creator">панель</a>
+                                    </p>
+                                </#if>
+                                 <#if model.user.get().hasRole("ADMIN")>
+                                    <p>
+                                        <strong>Панель администратора: </strong>
+                                        <a href="admin">панель</a>
+                                    </p>
+                                 </#if>
+                            <#--                                <#if model.user.get().role != "USER">-->
 <#--                                    <p><strong>Роль: </strong>${model.user.get().role}</p>-->
 <#--                                </#if>-->
                                 <#--                        <p><strong>Skills: </strong>-->
