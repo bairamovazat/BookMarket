@@ -8,6 +8,7 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
+@Table(name = "orders_books")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

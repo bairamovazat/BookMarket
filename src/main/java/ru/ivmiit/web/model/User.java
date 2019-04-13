@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "chat_user")
+@Table(name = "site_user")
 @Getter
 @Setter
 @NoArgsConstructor
