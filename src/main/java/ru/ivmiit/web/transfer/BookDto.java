@@ -30,6 +30,7 @@ public class BookDto {
 
     public static BookDto from(Book book){
         return BookDto.builder()
+                .id(book.getId())
                 .name(book.getName())
                 .author(book.getAuthor())
                 .pageCount(book.getPageCount())

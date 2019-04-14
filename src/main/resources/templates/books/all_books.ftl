@@ -19,6 +19,8 @@
                     <th scope="col">Категория</th>
                     <th scope="col">Издательство</th>
                     <th scope="col">Цена</th>
+                    <th scope="col">Купить</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -30,6 +32,13 @@
                     <td>${book.categoryName!}</td>
                     <td>${book.publisherName!}</td>
                     <td>${book.price!}</td>
+                    <td>
+                        <a href="#" onclick='putElementInBasket(${book.id!}, "${book.name!}", ${book.price?c})'>
+                            Купить
+                        </a>
+                    </td>
+
+
                 </tr>
                 </#list>
                 </tbody>
