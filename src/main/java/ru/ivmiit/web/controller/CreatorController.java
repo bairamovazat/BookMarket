@@ -13,10 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.ivmiit.web.forms.BookCategoryForm;
 import ru.ivmiit.web.forms.BookForm;
 import ru.ivmiit.web.forms.PublisherForm;
-import ru.ivmiit.web.service.AuthenticationService;
-import ru.ivmiit.web.service.BookCategoryService;
-import ru.ivmiit.web.service.BookService;
-import ru.ivmiit.web.service.PublisherService;
+import ru.ivmiit.web.model.OrderStatus;
+import ru.ivmiit.web.service.*;
 import ru.ivmiit.web.validators.BookCategoryFormValidator;
 import ru.ivmiit.web.validators.BookFormValidator;
 import ru.ivmiit.web.validators.PublisherFormValidator;
@@ -40,6 +38,9 @@ public class CreatorController {
 
     @Autowired
     private PublisherService publisherService;
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private BookCategoryFormValidator bookCategoryFormValidator;
@@ -170,6 +171,25 @@ public class CreatorController {
             attributes.addFlashAttribute("success", "Успешно!");
             return "redirect:create";
         }
+    }
+
+    @GetMapping("/orders/all")
+    public String getOrdersPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
+                                   @RequestParam("page") Optional<Integer> page) {
+        authenticationService.putUserToModelIfExists(authentication, model);
+        int currentPage = page.orElse(0);
+        model.addAttribute("orders", orderService.getAllOrders(currentPage));
+        model.addAttribute("pageList", orderService.getAllPageList(currentPage));
+        model.addAttribute("currentPage", currentPage);
+        return "creator/order/all_orders";
+    }
+
+    @GetMapping("/orders/change")
+    public String changeOrderStatus(@RequestParam("status")String orderStatus,
+                                    @RequestParam("id") Long orderId,
+                                    @RequestParam("redirectPage") Long page) {
+        orderService.changeStatus(orderId, OrderStatus.valueOf(orderStatus));
+        return "redirect:all?page=" + page;
     }
 
 }

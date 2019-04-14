@@ -42,7 +42,7 @@ public class Order {
 
     private Double price;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<OrdersBooks> books;
 
 }

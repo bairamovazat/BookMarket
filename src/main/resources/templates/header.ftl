@@ -17,7 +17,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<@spring.url "/"/>logout">Выход</a>
+                    <a onclick="updateBasketElement(event)"
+                       class="nav-link"
+                       id="basket"
+                       href="<@spring.url "/"/>order/create">Корзина</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<@spring.url "/"/>logout" onclick="putBasket([])">Выход</a>
                 </li>
             </#if>
              <#if !model.user.isPresent()>
@@ -25,12 +31,6 @@
                     <a class="nav-link" href="<@spring.url "/"/>login">Авторизация</a>
                 </li>
              </#if>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item">
-                <a onclick="updateBasketElement(event)" class="nav-link" id="basket">Корзина</a>
-            </li>
         </ul>
     </div>
 </nav>
