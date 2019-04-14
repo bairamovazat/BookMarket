@@ -1,5 +1,6 @@
 package ru.ivmiit.web.service;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +36,7 @@ public class FileServiceImpl implements FileService {
                 .path(UUID.randomUUID())
                 .build();
         java.io.File storageFile = new java.io.File(storagePath + "/" + file.getPath().toString());
-        multipartFile.transferTo(storageFile);
+        FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), storageFile);
         return fileRepository.save(file);
     }
 

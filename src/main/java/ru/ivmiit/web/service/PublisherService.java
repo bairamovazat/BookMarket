@@ -25,4 +25,7 @@ public interface PublisherService {
 
     @Transactional
     void save(PublisherForm publisherForm);
+
+    @Transactional
+    List<Publisher> getAllCategories();
 }

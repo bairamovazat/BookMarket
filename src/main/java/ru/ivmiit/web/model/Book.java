@@ -1,6 +1,7 @@
 package ru.ivmiit.web.model;
 
 import lombok.*;
+import ru.ivmiit.web.forms.BookForm;
 
 import javax.persistence.*;
 
@@ -41,5 +42,17 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "discount_id")
     private Discount discount;
+
+    public static Book from(BookForm form){
+        return Book.builder()
+                .name(form.getName())
+                .author(form.getAuthor())
+                .pageCount(form.getPageCount())
+                .description(form.getDescription())
+                .price(form.getPrice())
+                .count(form.getCount())
+                .rating(form.getRating())
+                .build();
+    }
 
 }
