@@ -1,9 +1,9 @@
 <#ftl encoding='UTF-8'>
 <!DOCTYPE html>
 <html>
-     <#include "../head.ftl">
+     <#include "head.ftl">
 <body>
-<#include "../header.ftl">
+<#include "header.ftl">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-1 col-lg-2 col-xs-3">
@@ -13,29 +13,23 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">Обожка</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Автор</th>
-                    <th scope="col">Категория</th>
-                    <th scope="col">Издательство</th>
+                    <#--<th scope="col">#</th>-->
+                    <th scope="col">Адрес</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Оплата после доставки</th>
+                    <th scope="col">Дата создания</th>
                     <th scope="col">Цена</th>
-                    <th scope="col">Купить</th>
                 </tr>
                 </thead>
                 <tbody>
-                <#list model.books as book>
+                <#list model.orders as order>
                 <tr>
-                    <td style="padding: 0px"><img src="<@spring.url "/file/"/>${book.titlePageId!}" style="max-height: 50px; max-width: 50px;"></td>
-                    <td>${book.name!}</td>
-                    <td>${book.author!}</td>
-                    <td>${book.categoryName!}</td>
-                    <td>${book.publisherName!}</td>
-                    <td>${book.price!}</td>
-                    <td>
-                        <a href="#" onclick='putElementInBasket(${book.id!}, "${book.name!}", ${book.price?c})'>
-                            Купить
-                        </a>
-                    </td>
+                    <#--<th scope="row"><a href="${'create?id=' + order.id}">${order.id!}</a></th>-->
+                    <td>${order.address!}</td>
+                    <td>${order.status!}</td>
+                    <td>${order.payAfterDelivery???string("Да", "Нет")}</td>
+                    <td>${order.createDate!}</td>
+                    <td>${order.price!} Руб</td>
                 </tr>
                 </#list>
                 </tbody>
@@ -67,6 +61,6 @@
     </div>
 </div>
 
-<#include "../footer.ftl">
+<#include "footer.ftl">
 </body>
 </html>

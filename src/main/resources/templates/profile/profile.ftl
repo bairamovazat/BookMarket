@@ -96,6 +96,8 @@
                                 <p><strong>Логин: </strong> ${model.user.get().login} </p>
                                 <p><strong>Почта: </strong>${model.user.get().email}</p>
                                 <p><strong>Статус: </strong>${model.user.get().state}</p>
+                                <p><strong>Заказы: </strong><a href="order/all">Просмотреть</a></p>
+
                                 <#if model.user.get().hasRole("CREATOR")>
                                     <p>
                                         <strong>Панель модератора: </strong>
