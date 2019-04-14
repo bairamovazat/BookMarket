@@ -78,5 +78,10 @@ public class PublisherServiceImpl implements PublisherService {
         publisherRepository.save(publisher);
     }
 
+    @Override
+    @Transactional
+    public List<Publisher> getAllCategories() {
+        return publisherRepository.findAll();
+    }
 
 }

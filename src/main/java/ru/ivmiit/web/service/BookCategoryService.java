@@ -23,4 +23,7 @@ public interface BookCategoryService {
 
     @Transactional
     void save(BookCategoryForm bookCategoryForm);
+
+    @Transactional
+    List<BookCategory> getAllCategories();
 }

@@ -1,5 +1,4 @@
 <#ftl encoding='UTF-8'>
-<#import "spring.ftl" as spring />
 <!DOCTYPE html>
 <html>
      <#include "../../head.ftl">
@@ -19,10 +18,12 @@
                     <button class="btn btn-secondary">Назад</button>
                 </a>
             </div>
-            <form action="" method='POST'>
+            <form action="" method='POST' enctype="multipart/form-data">
                 <div class="form-group">
-                    <#if error??>
-                        <div class="alert alert-danger" role="alert">${error}</div>
+                    <#if errors??>
+                        <#list errors as error>
+                            <div class="alert alert-danger" role="alert">${error}</div>
+                        </#list>
                     </#if>
                 </div>
 
@@ -60,24 +61,25 @@
 
                 <div class="form-group">
                     <label>Выберите обложку</label>
-                    <input name="titlePage" type="file" class="form-control"
-                           value="${model.book???then(spring.url + model.book.pageCount, "")}"/>
+                    <input name="titlePage" id="titlePage" accept="image/*" type="file" class="form-control"/>
                 </div>
 
                 <div class="form-group">
+                    <label>Выберите категорию</label>
                     <select name="categoryId" class="form-control">
                         <#list model.categories as category>
-                            <option value="${category.id?c}"<#if (category.id == model.book.categoryId)>
-                                selected="selected"</#if>>${category?c}</option>
+                            <option value="${category.id}"<#if (model.book?? && category.id == model.book.categoryId)>
+                                selected="selected"</#if>>${category.name}</option>
                         </#list>
                     </select>
                 </div>
 
                 <div class="form-group">
+                    <label>Выберите издателя</label>
                     <select name="publisherId" class="form-control">
                         <#list model.publishers as publisher>
-                            <option value="${publisher.id?c}"<#if (publisher.id == model.book.publisherId)>
-                                selected="selected"</#if>>${publisher?c}</option>
+                            <option value="${publisher.id}"<#if (model.book?? && publisher.id == model.book.publisherId)>
+                                selected="selected"</#if>>${publisher.name}</option>
                         </#list>
                     </select>
                 </div>
@@ -91,7 +93,7 @@
                 <div class="form-group">
                     <label>Цена</label>
                     <input name="price" type="number" min="1" class="form-control"
-                              placeholder="Описание">${model.book???then(model.book.price, "")}
+                           placeholder="Описание">${model.book???then(model.book.price, "")}
                 </div>
 
                 <div class="form-group">

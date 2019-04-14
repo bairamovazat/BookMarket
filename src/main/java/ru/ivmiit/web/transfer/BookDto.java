@@ -19,9 +19,9 @@ public class BookDto {
     private Integer pageCount;
     private Long titlePageId;
 
-    private Long categoryId;
+    private String categoryName;
 
-    private Long publisherId;
+    private String publisherName;
 
     private String description;
     private Double price;
@@ -33,15 +33,14 @@ public class BookDto {
                 .name(book.getName())
                 .author(book.getAuthor())
                 .pageCount(book.getPageCount())
-                .titlePageId(book.getTitlePage().getId())
-                .categoryId(book.getCategory().getId())
-                .publisherId(book.getPublisher().getId())
+                .titlePageId(book.getTitlePage() != null ? book.getTitlePage().getId() : null)
+                .categoryName(book.getCategory() != null ? book.getCategory().getName() : null)
+                .publisherName(book.getPublisher() != null ? book.getPublisher().getName() : null)
                 .description(book.getDescription())
                 .price(book.getPrice())
                 .count(book.getCount())
                 .rating(book.getRating())
                 .build();
-
 
     }
 

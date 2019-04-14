@@ -13,19 +13,23 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th scope="col">Обожка</th>
                     <th scope="col">Название</th>
                     <th scope="col">Автор</th>
                     <th scope="col">Категория</th>
                     <th scope="col">Издательство</th>
+                    <th scope="col">Цена</th>
                 </tr>
                 </thead>
                 <tbody>
                 <#list model.books as book>
                 <tr>
+                    <td style="padding: 0px"><img src="<@spring.url "/file/"/>${book.titlePageId!}" style="max-height: 50px; max-width: 50px;"></td>
                     <td>${book.name!}</td>
                     <td>${book.author!}</td>
-                    <td>${book.category???then(book.category.name!, "")}</td>
-                    <td>${book.publisher???then(book.publisher.name!, "")}</td>
+                    <td>${book.categoryName!}</td>
+                    <td>${book.publisherName!}</td>
+                    <td>${book.price!}</td>
                 </tr>
                 </#list>
                 </tbody>

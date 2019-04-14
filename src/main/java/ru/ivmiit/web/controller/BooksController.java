@@ -28,7 +28,7 @@ public class BooksController {
         authenticationService.putUserToModelIfExists(authentication, model);
         int currentPage = page.orElse(0);
         model.addAttribute("pageList", bookService.getPageList(currentPage));
-        model.addAttribute("books", bookService.getBooks(currentPage));
+        model.addAttribute("books", bookService.getBooksDto(currentPage));
         model.addAttribute("currentPage", currentPage);
         return "books/all_books";
     }

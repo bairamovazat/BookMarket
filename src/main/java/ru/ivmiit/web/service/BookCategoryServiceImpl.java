@@ -36,7 +36,6 @@ public class BookCategoryServiceImpl implements BookCategoryService {
         return getCategories(page, defaultElementsInPage);
     }
 
-
     @Override
     @Transactional
     public List<BookCategory> getCategories(int page, int count) {
@@ -77,5 +76,12 @@ public class BookCategoryServiceImpl implements BookCategoryService {
         bookCategory.setName(bookCategoryForm.getName());
         bookCategoryRepository.save(bookCategory);
     }
+
+    @Override
+    @Transactional
+    public List<BookCategory> getAllCategories() {
+        return bookCategoryRepository.findAll();
+    }
+
 
 }

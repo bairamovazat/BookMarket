@@ -8,6 +8,11 @@
     <div class="navbar-collapse collapse" id="collapsingNavbarLg">
         <ul class="navbar-nav">
             <#if model.user.isPresent()>
+              <li class="nav-item">
+                  <a class="nav-link" href="<@spring.url "/"/>book">Книги
+                  </a>
+              </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<@spring.url "/"/>profile">Личный кабинет
                     </a>
