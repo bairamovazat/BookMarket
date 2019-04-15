@@ -30,7 +30,7 @@
                 <#--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="submit" value="Авторизоваться">
+                    <input class="form-control" type="submit" value="Авторизоваться" onclick="putBasket([])">
                 </div>
             </form>
             <div class="card">
