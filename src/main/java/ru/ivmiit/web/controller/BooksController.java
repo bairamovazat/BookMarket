@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.ivmiit.web.service.AuthenticationService;
 import ru.ivmiit.web.service.BookService;
 
@@ -32,9 +29,10 @@ public class BooksController {
         model.addAttribute("currentPage", currentPage);
         return "books/all_books";
     }
-    @GetMapping("/show")
-    public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
+    @GetMapping("/show/{id}")
+    public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication, @PathVariable("id")Long bookId) {
         authenticationService.putUserToModelIfExists(authentication, model);
+        model.addAttribute("book", bookService.getBookDto(bookId));
         return "books/book_page";
     }
 }

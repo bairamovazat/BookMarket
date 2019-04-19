@@ -17,7 +17,6 @@
     <div class="navbar-collapse collapse" id="collapsingNavbarLg">
                 <form class="form-inline" style="width: 45%;padding-left: 1%;">
                     <input class="form-control mr-sm-2" style="width: 80%; " type="search" placeholder="Search" aria-label="Search">
-
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                 </form>
         <ul class="navbar-nav">
@@ -36,7 +35,6 @@
                 </a>
             </li>
             <#if model.user.isPresent()>
-
                 <li class="nav-item">
                     <a class="nav-link" href="<@spring.url "/"/>profile">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
@@ -72,7 +70,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="<@spring.url "/"/>order/all">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
                             <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
                                 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">

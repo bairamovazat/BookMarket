@@ -28,7 +28,7 @@
                 <#list model.books as book>
                 <tr>
                     <td style="padding: 0px">
-                        <img src="<@spring.url "/file/"/>${book.titlePageId!}"
+                        <img src="<@spring.url "/file/"/>${book.titlePageId?html}"
                              style="max-height: 50px; max-width: 50px;">
                     </td>
                     <td>${book.name!}</td>
