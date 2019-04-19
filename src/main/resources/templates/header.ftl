@@ -163,10 +163,10 @@
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Филология</a>
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Художетсвенная литература</a>
         </div>
-        <a class="p-2 text-muted" href="#">Доставка и оплата</a>
+        <a class="p-2 text-muted" href="<@spring.url "/"/>common/delivery">Доставка и оплата</a>
         <a class="p-2 text-muted" href="#">Новинки</a>
         <a class="p-2 text-muted" href="#">Вопрос-ответ</a>
         <a class="p-2 text-muted" href="#">Скидки</a>
-        <a class="p-2 text-muted" href="#">Контакты</a>
+        <a class="p-2 text-muted" href="<@spring.url "/"/>common/contacts">Контакты</a>
     </nav>
 </div>
