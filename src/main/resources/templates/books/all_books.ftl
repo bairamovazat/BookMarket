@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 ${book.price!} ₽
-                                <a class="btn btn-primary" role="button" href="#"
+                                <a class="btn btn-primary" style="color: white" role="button"
                                    onclick='putElementInBasket(${book.id!}, "${book.name!}", ${book.price?c})'>
                                     Купить
                                 </a>
