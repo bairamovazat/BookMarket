@@ -15,26 +15,24 @@
                 <p><input type="button" class="btn btn-primary" value="В корзину"/></p>
             </div>
             <div class="col-md-4 col-sm-8 col-6 mx-auto">
-                <p>Цена : <label id="price">468 руб.</label><br>
-                    ФИО автора : <label id="author">Чернов Н.Н.</label><br>
-                    Год публикации : <label id="year">2017</label><br>
-                    Издательство : <label id="publisher">Феникс</label><br>
-                    Раздел каталог : <label id="category">Книги по биологии</label><br>
-                    Серия книги : <label id="seria">Высшее медицинское образование</label><br>
-                    ISBN : <label id="isbn">9785222274316</label><br>
-                    Артикул : <label id="articul">O0078905</label><br>
-                    Количество страниц : <label id="pagenum">205 страниц</label><br>
-                    Тип переплета : <label id="pereplet">матовая</label><br>
-                    Полиграфический формат издания : <label id="format">84*108/32</label><br>
-                    Вес книги : <label id="weight">262 г</label><br>
-                    Книг в наличии : <label id="instock">274</label></p>
+                <p>Цена : <label id="price">${model.book.price}</label><br>
+                    ФИО автора : <label id="author">${model.book.author}</label><br>
+                    <#--Год публикации : <label id="year">2017</label><br>-->
+                    Издательство : <label id="publisher">${model.book.publisherName}</label><br>
+                    Раздел каталог : <label id="category">${model.book.categoryName}</label><br>
+                    <#--Серия книги : <label id="seria">Высшее медицинское образование</label><br>-->
+                    <#--ISBN : <label id="isbn">9785222274316</label><br>-->
+                    <#--Артикул : <label id="articul">O0078905</label><br>-->
+                    Количество страниц : <label id="pagenum">${model.book.pageCount}</label><br>
+                    <#--Тип переплета : <label id="pereplet">матовая</label><br>-->
+                    <#--Полиграфический формат издания : <label id="format">84*108/32</label><br>-->
+                    <#--Вес книги : <label id="weight">262 г</label><br>-->
+                    Книг в наличии : <label id="instock">${model.book.count}</label></p>
             </div>
             <div class="col-md-5 col-sm-12 col-12 mx-auto">
-                <p><h5>Рейтинг: <label id="raiting">95</label></h5></p>
+                <p><h5>Рейтинг: <label id="raiting">${model.book.rating}</label></h5></p>
                 <p><h5>Аннотация:<br></h5>
-                <label id="annotation">В исправленном и дополненном издании известного практического курса представлены лабораторные занятия, контрольные, зачетные задания и тесты, составленные в соответствии с программой по биологической химии для студентов медицинских вузов.
-                Учебное пособие может быть использовано студентами и преподавателями медицинских специальностей при проведении аудиторных занятий, зачетов, экзаменов.
-                </label></p>
+                <label id="annotation">${model.book.description}</label></p>
             </div>
             </div>
         </div>

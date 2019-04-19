@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ivmiit.web.forms.BookForm;
@@ -55,7 +56,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public List<Book> getBooks(int page, int count) {
-        return bookRepository.findAll(PageRequest.of(page, count)).getContent();
+        return bookRepository.findAll(PageRequest.of(page, count, new Sort(Sort.Direction.ASC, "id"))).getContent();
     }
 
     @Override
@@ -111,9 +112,7 @@ public class BookServiceImpl implements BookService {
         book.setCategory(category);
         book.setPublisher(publisher);
         book.setTitlePage(file);
-
         bookRepository.save(book);
     }
-
 
 }

@@ -25,6 +25,13 @@
                     <a class="form-control" href="creator/publishers/all">Издательства</a>
                 </div>
             </div>
+            <div class="row" style="padding-left: 15px">
+                <form class="form-group" action="import/from" method="GET">
+                    <label>Введите путь до папки на компьютере для импорта файлов</label>
+                    <input class="form-control" name="path"/>
+                    <input class="btn" type="submit" value="Отправить"/>
+                </form>
+            </div>
         </div>
 
         <div class="col-md-1 col-lg-2 col-xs-3">

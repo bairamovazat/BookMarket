@@ -41,6 +41,19 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    @Transactional
+    public File saveFile(InputStream stream, String fileName, long size) throws IOException {
+        File file = File.builder()
+                .fileName(fileName)
+                .size(size)
+                .path(UUID.randomUUID())
+                .build();
+        java.io.File storageFile = new java.io.File(storagePath + "/" + file.getPath().toString());
+        FileUtils.copyInputStreamToFile(stream, storageFile);
+        return fileRepository.save(file);
+    }
+
+    @Override
     public void writeFileToResponse(Long id, HttpServletResponse response) throws IOException {
         File file = fileRepository.findFirstById(id).orElseThrow(() -> new NotFoundException("File not found"));
         writeFileToResponse(file, response);
