@@ -15,7 +15,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="collapsingNavbarLg">
-                <form class="form-inline" style="width: 45%;padding-left: 1%;">
+                <form class="form-inline" style="width: 60%;padding-left: 1%;">
                     <input class="form-control mr-sm-2" style="width: 80%; " type="search" placeholder="Search" aria-label="Search">
 
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
@@ -148,13 +148,13 @@
         </ul>
     </div>
 </nav>
-<div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-        <a class="p-2 text-muted" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="nav-scroller py-1 mb-2 w3-bar-block w3-card-2" style="background-color:#4b545c;">
+    <nav class="nav d-flex justify-content-between ">
+        <a class="p-2 w3-bar-item w3-button text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Книги
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Воспитание</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+            <a class="dropdown-item "  href="<@spring.url "/"/>books/all">Воспитание</a>
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Образование</a>
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Дом.Быт</a>
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Наука</a>
@@ -165,10 +165,10 @@
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Филология</a>
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Художетсвенная литература</a>
         </div>
-        <a class="p-2 text-muted" href="#">Доставка и оплата</a>
-        <a class="p-2 text-muted" href="#">Новинки</a>
-        <a class="p-2 text-muted" href="#">Вопрос-ответ</a>
-        <a class="p-2 text-muted" href="#">Скидки</a>
-        <a class="p-2 text-muted" href="#">Контакты</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="#">Доставка и оплата</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="#">Новинки</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="#">Вопрос-ответ</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="#">Скидки</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="#">Контакты</a>
     </nav>
 </div>
