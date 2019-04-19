@@ -32,4 +32,9 @@ public class BooksController {
         model.addAttribute("currentPage", currentPage);
         return "books/all_books";
     }
+    @GetMapping("/show")
+    public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
+        authenticationService.putUserToModelIfExists(authentication, model);
+        return "books/book_page";
+    }
 }
