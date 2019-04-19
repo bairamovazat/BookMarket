@@ -8,7 +8,7 @@ function basketElement(id, name, price) {
 }
 
 function updateBasketElement() {
-    document.getElementById("basket").innerText = ("Корзина " + getBasket().length);
+    document.getElementById("basket").innerText = (getBasket().length);
 }
 
 function getBasket() {
