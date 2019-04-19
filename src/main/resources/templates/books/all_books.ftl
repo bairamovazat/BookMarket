@@ -4,42 +4,37 @@
      <#include "../head.ftl">
 <body>
 <#include "../header.ftl">
-<div class="container-fluid">
+<div class="container-fluid h-100">
+
     <div class="row">
+
         <div class="col-md-1 col-lg-2 col-xs-3">
 
         </div>
         <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xs-6">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">Обожка</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Автор</th>
-                    <th scope="col">Категория</th>
-                    <th scope="col">Издательство</th>
-                    <th scope="col">Цена</th>
-                    <th scope="col">Купить</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="row h-100 ">
                 <#list model.books as book>
-                <tr>
-                    <td style="padding: 0px"><img src="<@spring.url "/file/"/>${book.titlePageId!}" style="max-height: 50px; max-width: 50px;"></td>
-                    <td>${book.name!}</td>
-                    <td>${book.author!}</td>
-                    <td>${book.categoryName!}</td>
-                    <td>${book.publisherName!}</td>
-                    <td>${book.price!}</td>
-                    <td>
-                        <a href="#" onclick='putElementInBasket(${book.id!}, "${book.name!}", ${book.price?c})'>
-                            Купить
-                        </a>
-                    </td>
-                </tr>
+
+            <div class="col-3 col-sm-3 col-xs-3 my-auto text-center" STYLE="overflow: hidden;padding-left: 2%">
+                <div class="card" STYLE="padding-left: 2%">
+                <div class="center-block" style="width: 100%;height: auto"><img class="card-img-top" style="max-height: 300px;max-width: 200px;" src="<@spring.url "/file/"/>${book.titlePageId!}"></div>
+                        <div class="card-body">
+                            ${book.price!} ₽
+                            <a class="btn btn-primary" role="button" href="#" onclick='putElementInBasket(${book.id!}, "${book.name!}", ${book.price?c})'>
+                                Купить
+                            </a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><div style="vertical-align: baseline;" >${book.name!}</div></li>
+                            <li class="list-group-item"><div class="font-weight-light" style="font-size: 14px;vertical-align: baseline;" >${book.author!}</div></li>
+                            <li class="list-group-item"><div class="font-weight-light" style="font-size: 12px;">${book.publisherName!}</div></li>
+                        </ul>
+
+                </div>
+            </div>
                 </#list>
-                </tbody>
-            </table>
+
+            </div>
             <nav aria-label="navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ${((model.currentPage == 0)?string("disabled",""))}">

@@ -61,7 +61,7 @@
                     <h4 id="totalPrice" style="padding-top: 4px; padding-right: 4px;">
                         Итого: 0
                     </h4>
-                    <button id="submit-order" class="btn bth-primary">
+                    <button id="submit-order" class="btn btn-primary">
                         Оформить
                     </button>
                 </div>
