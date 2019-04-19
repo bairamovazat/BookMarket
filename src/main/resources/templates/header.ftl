@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="position: relative;"
+                     <a class="nav-link" style="position: relative;"
                        href="<@spring.url "/"/>order/create">
                         <div > <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
                             <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
@@ -60,9 +60,8 @@
                                     </rdf:RDF>
                                 </x:xmpmeta><?xpacket end="w"?></metadata>
                             <image id="Слой_1" data-name="Слой 1" y="8" width="48" height="48" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABzlBMVEUAAADr6+vt7e3+/v78/Pzw8PDc3NzR0dH+/v7d3d3t7e0qKirBwcH09PTS0tLn5+ft7e3w8PDMzMzm5ubz8/NlZWXn5+fZ2dnPz8/j4+NcXFzu7u7r6+vl5eXW1tbS0tLk4uJfX1/u7u7t7e1qamrk5OTg4ODp6elnZ2fu7u7l5eXh4eFjY2MzMzP39/f8/Pxra2vj4+PT09PPz8/h4eHa2tri4uLBwcFtbW3t7e15eXn9/f309PQAAADv7+9hYWHj4+Pk5OTh4eHu7u6RkZHd3d2mpqbm5uZubm7r6+vo6Ojk5OTx8fFZWVk4ODj4+PhfX1/g4ODNzc3V1dXj4+Pe3t7q6uri4uK7u7tvb2/q6up7e3vy8vLx8fFUVFTk5OTj4+Pf39/Jycnv7++Kiorr6+u0tLTm5uZwcHDo6Ojk5OTz8/P6+vpOTk7e3t7R0dHk5OTs7Ox4eHjm5uXg4ODMzMzQ0NDl5eVIJCTz8/PMzMxVVVXY2Nj7+/vg4OCdnZ36+vrm5ubm5ubo6Ojm5ubm5ubk5OT09PPz8/P09PTz8vLz8/Pl5eXl5eWRkZHx8fHz8/ONjY2VlZXU1NTU1NTk5OT////p6enz8/MAAADzQGKwAAAAlXRSTlMAM87v7N6rTveJzwZH2Uo20DNMvd0ZjFlVkhbZ1Y5YVpEY19cYkanMG9aDaBcF5O4Tk1dQpVqrSxzVF+/hAtsVbn+V0ypcN78e05Ff3BQJ6BCXU1eeXoqzRCDRHd3eEnR6mVHZI4A+uiLQmN/qDZx8YXwkyZlRU6MH1m8MPPOoPOuJlJWHiInh4uPg45WUHNbVGx26uT3ZjawAAAABYktHRACIBR1IAAAACXBIWXMAAAc6AAAHOgGqxcQdAAAAB3RJTUUH4wQTEBArEXDVXAAAAaxJREFUSMeVk/s7FGEYhicj3rYokt0sIqciUslhSSUbtYSOzuecaitKxcopcsoSeuyf2zbTXjHf98613/PTPPe89zXfO9eMdiJGNxJ7Mi5eiya/ATIV0KlohEPAYVycPpNAiVEIZ885kv5dJtP5qA71Pyl0QU1IhVNNcOGimpBGbsUl0lWXyECmmnAJWWpCNl1WXCKHctWEPOj2ybcIzsiXyAQFFuEKXbU7QCGKrMhN1/j54pLrpVZ2Azd54RbKBHYbGbxQjgqBVVIVO++prrkj0lq6ywn3cF9C6+DihAdUL6FepDLzD6lBhhvpESM8hk/Km6hZyp+0xLZKb7ThqZQ/w3P5k1/gpZS/ona50EGdMtxF3dzb66FeCe1DPycMYFBCh2iYE3x4LcIRGuXmtTEaF+EEvKygvZH8dfTWzwvvZD/2e35e+4BJTSlT9FFN0Gp0v5rwCdNqwmd8URO+ztBsQMmY+ya+2XlbYwFhAxHLKIseO2EJy4HAd6wYZdUsP+yENT28g19fN8qGWTbthK2jwrHC5Kd5im2xMAnu/N1z95dYuOzth0IHQUn5A0byZBcVsLr2AAAAAElFTkSuQmCC"/>
-                            <div style="position: absolute;top:0px;right: 0px;" onclick="updateBasketElement(event)"
+                            <div id="basket" style="position: absolute;top:0px;right: 0px;" onclick="updateBasketElement(event)"
                                class="nav-link"
-                               id="basket"
                                href="<@spring.url "/"/>order/create">0</div>
                         </svg>
                         </div>
@@ -163,10 +162,10 @@
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Филология</a>
             <a class="dropdown-item" href="<@spring.url "/"/>books/all">Художетсвенная литература</a>
         </div>
-        <a class="p-2 w3-bar-item w3-button text-white" href="#">Доставка и оплата</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="<@spring.url "/"/>common/delivery">Доставка и оплата</a>
         <a class="p-2 w3-bar-item w3-button text-white" href="#">Новинки</a>
         <a class="p-2 w3-bar-item w3-button text-white" href="#">Вопрос-ответ</a>
         <a class="p-2 w3-bar-item w3-button text-white" href="#">Скидки</a>
-        <a class="p-2 w3-bar-item w3-button text-white" href="#">Контакты</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="<@spring.url "/"/>common/contacts">Контакты</a>
     </nav>
 </div>

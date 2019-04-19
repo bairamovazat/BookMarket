@@ -25,4 +25,9 @@ public class CommonController {
         authenticationService.putUserToModelIfExists(authentication, model);
         return "common/contacts";
     }
+    @GetMapping("/main")
+    public String getMainPage(@ModelAttribute("model") ModelMap model, Authentication authentication){
+        authenticationService.putUserToModelIfExists(authentication, model);
+        return "common/main";
+    }
 }
