@@ -8,10 +8,10 @@
     <div class="row">
         <div class="col-md-1 mx-auto"></div>
         <div class="col-md-10 mx-auto">
-            <h2>Биохимия: практикум</h2><br>
+            <h2>${model.book.name}</h2><br>
             <div class="row">
             <div class="col-md-3 col-sm-4 col-6 mx-auto">
-                <p><img src="/web/resources/image/picture.jpg" width="100%" height="auto"/></p>
+                <p><img src="<@spring.url "/file/"/>${model.book.titlePageId???then(model.book.titlePageId?c, "")}" width="100%" height="auto"/></p>
                 <p><input type="button" class="btn btn-primary" value="В корзину" onclick='putElementInBasket(${model.book.id!}, "${model.book.name!}", ${model.book.price?c})'/></p>
             </div>
             <div class="col-md-4 col-sm-8 col-6 mx-auto">
