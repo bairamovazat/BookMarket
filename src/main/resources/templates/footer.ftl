@@ -13,11 +13,11 @@
                 <h5 class="text-light bg-dark text-uppercase mt-3 mb-4">Важно</h5>
 
                 <ul class="list-unstyled">
-                    <li><a href="#!">Доставка и оплата</a></li>
+                    <li><a href="<@spring.url "/"/>common/delivery">Доставка и оплата</a></li>
                     <li><a href="#!">Новинки</a></li>
                     <li><a href="#!">Вопрос-ответ</a></li>
                     <li><a href="#!">Скидки</a></li>
-                    <li><a href="#!">Контакты</a></li>
+                    <li><a href="<@spring.url "/"/>common/contacts">Контакты</a></li>
                 </ul>
             </div>
             <!-- Grid column -->
@@ -31,11 +31,11 @@
                 <h5 class="text-light bg-dark text-uppercase mt-3 mb-4">Книги</h5>
 
                 <ul class="list-unstyled">
-                    <li><a href="#!">Воспитание. Образование</a></li>
-                    <li><a href="#!">Дом. Быт</a></li>
-                    <li><a href="#!">Наука</a></li>
-                    <li><a href="#!">Детская литература</a></li>
-                    <li> <a href="#!">Медицина</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Воспитание. Образование</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Дом. Быт</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Наука</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Детская литература</a></li>
+                    <li> <a href="<@spring.url "/"/>books/all">Медицина</a></li>
                 </ul>
             </div>
             <!-- Grid column -->
@@ -49,10 +49,10 @@
                 <h5 class="text-light bg-dark text-uppercase mt-3 mb-4"> </h5>
 
                 <ul class="list-unstyled">
-                    <li><a href="#!">Право</a></li>
-                    <li><a href="#!">Прикладные науки</a></li>
-                    <li><a href="#!">Филология</a></li>
-                    <li><a href="#!">Художественная литература</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Право</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Прикладные науки</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Филология</a></li>
+                    <li><a href="<@spring.url "/"/>books/all">Художественная литература</a></li>
                 </ul>
             </div>
             <!-- Grid column -->
