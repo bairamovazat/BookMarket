@@ -29,5 +29,4 @@ public class BookForm {
 
     private Integer count;
     private Integer rating;
-
 }

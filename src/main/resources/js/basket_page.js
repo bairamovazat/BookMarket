@@ -28,6 +28,12 @@ function changeCountFunction(event, id) {
     });
     basketElement.count = +event.target.valueAsNumber;
     putBasket(basket);
+    if(basketElement.count === 0){
+        basket.splice(basket.indexOf(basketElement), 1);
+        event.target.parentElement.parentElement.parentElement.removeChild(event.target.parentElement.parentElement);
+        putBasket(basket);
+    }
+    console.log(basket);
     updateSum();
 }
 
@@ -40,7 +46,7 @@ function createBasketDomElement(id, name, count, price, formId) {
     // countTd.innerText = count;
 
     var priceTd = document.createElement("td");
-    priceTd.innerText = "" + count * price;
+    priceTd.innerText = "" + price;
 
     var idInput = document.createElement("input");
     idInput.type = "text";
@@ -52,11 +58,11 @@ function createBasketDomElement(id, name, count, price, formId) {
     changeCount.style.width = "100px";
     changeCount.className = "form-control";
     changeCount.type = "number";
-    changeCount.min = "1";
+    changeCount.min = "0";
     changeCount.value = count;
     changeCount.name = "books[" + formId + "].count";
 
-    changeCount.onchange = function (event) {
+    changeCount.onclick = function (event) {
         changeCountFunction(event, id);
     };
     countTd.appendChild(changeCount);
