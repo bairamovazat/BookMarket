@@ -110,92 +110,14 @@
                                         <a href="admin">панель</a>
                                     </p>
                                  </#if>
-                            <#--                                <#if model.user.get().role != "USER">-->
-<#--                                    <p><strong>Роль: </strong>${model.user.get().role}</p>-->
-<#--                                </#if>-->
-                                <#--                        <p><strong>Skills: </strong>-->
-                                <#--                            <span class="tags">html5</span>-->
-                                <#--                            <span class="tags">css3</span>-->
-                                <#--                            <span class="tags">jquery</span>-->
-                                <#--                            <span class="tags">bootstrap3</span>-->
-                                <#--                        </p>-->
                             </div>
                             <div class="col-xs-12 col-sm-4 text-center" style="padding-top: 25px;">
                                 <figure>
                                     <img style="width: 100px; height: 100px;" src="resources/user.png" alt=""
                                          class="img-circle img-responsive">
-                                    <#--                            <figcaption class="ratings">-->
-                                    <#--                                <p>Ratings-->
-                                    <#--                                    <a href="#">-->
-                                    <#--                                        <span class="fa fa-star">1</span>-->
-                                    <#--                                    </a>-->
-                                    <#--                                    <a href="#">-->
-                                    <#--                                        <span class="fa fa-star">2</span>-->
-                                    <#--                                    </a>-->
-                                    <#--                                    <a href="#">-->
-                                    <#--                                        <span class="fa fa-star">3</span>-->
-                                    <#--                                    </a>-->
-                                    <#--                                    <a href="#">-->
-                                    <#--                                        <span class="fa fa-star">4</span>-->
-                                    <#--                                    </a>-->
-                                    <#--                                    <a href="#">-->
-                                    <#--                                        <span class="fa fa-star-o">5</span>-->
-                                    <#--                                    </a>-->
-                                    <#--                                </p>-->
-                                    <#--                            </figcaption>-->
-                                </figure>
                             </div>
                         </div>
-                        <div class="col-xs-12 divider text-center d-flex">
-                            <div class="col-xs-12 col-sm-4 emphasis">
-                                <h2><strong> 20,7K </strong></h2>
-                                <p>
-                                    <small>Following</small>
-                                </p>
 
-                                    <button class="btn btn-success btn-block">
-                                    <span class="fa fa-plus-circle">
-
-                                    </span>
-                                        Просмотреть
-                                    </button>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 emphasis">
-                                <h2><strong>245</strong></h2>
-                                <p>
-                                    <small>Following</small>
-                                </p>
-                                <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile
-                                </button>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 emphasis">
-                                <h2><strong>43</strong></h2>
-                                <p>
-                                    <small>Snippets</small>
-                                </p>
-                                <div class="btn-group dropup btn-block">
-                                    <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span>
-                                        Options
-                                    </button>
-                                    <button type="button" class="btn btn-primary dropdown-toggle"
-                                            data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu text-left" role="menu">
-                                        <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email
-                                            </a></li>
-                                        <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a
-                                                list </a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user
-                                                for spam</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

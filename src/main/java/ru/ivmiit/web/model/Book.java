@@ -35,7 +35,7 @@ public class Book {
 
     @Column(length = 1024)
     private String description;
-    private Double price;
+    private Double price = 0.0;
     private Integer count;
     private Integer rating;
 

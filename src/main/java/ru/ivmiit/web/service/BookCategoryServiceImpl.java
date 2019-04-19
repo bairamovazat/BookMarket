@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ivmiit.web.forms.BookCategoryForm;
@@ -39,7 +40,7 @@ public class BookCategoryServiceImpl implements BookCategoryService {
     @Override
     @Transactional
     public List<BookCategory> getCategories(int page, int count) {
-        return bookCategoryRepository.findAll(PageRequest.of(page, count)).getContent();
+        return bookCategoryRepository.findAll(PageRequest.of(page, count, new Sort(Sort.Direction.ASC, "id"))).getContent();
     }
 
     @Override
