@@ -165,7 +165,7 @@
         <a class="p-2 w3-bar-item w3-button text-white" href="<@spring.url "/"/>common/delivery">Доставка и оплата</a>
         <a class="p-2 w3-bar-item w3-button text-white" href="#">Новинки</a>
         <a class="p-2 w3-bar-item w3-button text-white" href="#">Вопрос-ответ</a>
-        <a class="p-2 w3-bar-item w3-button text-white" href="#">Скидки</a>
+        <a class="p-2 w3-bar-item w3-button text-white" href="#">Скидка</a>
         <a class="p-2 w3-bar-item w3-button text-white" href="<@spring.url "/"/>common/contacts">Контакты</a>
     </nav>
 </div>
