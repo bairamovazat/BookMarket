@@ -93,7 +93,6 @@ public class ImportBooksServiceImpl implements ImportBooksService {
                                             if((line = reader.readLine()) != null)
                                                 book.setDescription(line.substring(0, Math.min(1024, line.length())));
                                         }
-
                                     }
                                 } catch (Exception e){
                                     System.out.println(e.toString());
@@ -116,13 +115,13 @@ public class ImportBooksServiceImpl implements ImportBooksService {
     }
 
     public BookCategory createOrGetCategory(String name){
-        BookCategory bookCategory = bookCategoryRepository.findByNameContainingIgnoreCase("name").orElse(BookCategory.builder().name(name).build());
+        BookCategory bookCategory = bookCategoryRepository.findByNameContainingIgnoreCase(name).orElse(BookCategory.builder().name(name).build());
         bookCategoryRepository.save(bookCategory);
         return bookCategory;
     }
 
     public Publisher createOrGetPublisher(String name){
-        Publisher publisher = publisherRepository.findByNameContainingIgnoreCase("name").orElse(Publisher.builder().name(name).build());
+        Publisher publisher = publisherRepository.findByNameContainingIgnoreCase(name).orElse(Publisher.builder().name(name).build());
         publisherRepository.save(publisher);
         return publisher;
     }
