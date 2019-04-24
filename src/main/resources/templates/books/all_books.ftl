@@ -11,6 +11,7 @@
         <div class="col-12">
             <div class="row" style=" padding-top: 2%;">
                 <div class="col-1">
+
                 </div>
                 <div class="col-10 my-auto text-center ">
                     <form class="form-inline "  >
