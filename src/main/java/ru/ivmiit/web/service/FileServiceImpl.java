@@ -61,7 +61,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void writeFileToResponse(File file, HttpServletResponse response) throws IOException {
-        response.setContentType(file.getType());
+        response.setContentType(response.getContentType() != null ? response.getContentType() : "application/octet-stream");
         InputStream inputStream = new FileInputStream(new java.io.File(storagePath + "/" + file.getPath().toString()));
         IOUtils.copy(inputStream, response.getOutputStream());
         response.flushBuffer();

@@ -36,7 +36,7 @@
                     <div class="col-6 col-sm-4 col-md-3 col-xs-2 my-auto text-center" style="overflow: hidden;padding-left: 2%">
                         <div class="card" style="padding-left: 2%">
                             <div class="center-block" style="width: 100%;height: auto">
-                                <a href="show/${book.id?c}">
+                                <a href="books/show/${book.id?c}">
                                     <img class="card-img-top"
                                          style="max-height: 300px;max-width: 200px;"
                                          src="<@spring.url "/file/"/>${book.titlePageId???then(book.titlePageId?c, "")}">
@@ -72,7 +72,7 @@
                    <div class="col-6 col-sm-4 col-md-3 col-xs-2 my-auto text-center" style="overflow: hidden;padding-left: 2%">
                        <div class="card" style="padding-left: 2%">
                            <div class="center-block" style="width: 100%;height: auto">
-                               <a href="show/${book.id?c}">
+                               <a href="books/show/${book.id?c}">
                                    <img class="card-img-top"
                                         style="max-height: 300px;max-width: 200px;"
                                         src="<@spring.url "/file/"/>${book.titlePageId???then(book.titlePageId?c, "")}">
@@ -108,7 +108,7 @@
                    <div class="col-6 col-sm-4 col-md-3 col-xs-2 my-auto text-center" style="overflow: hidden;padding-left: 2%">
                        <div class="card" style="padding-left: 2%">
                            <div class="center-block" style="width: 100%;height: auto">
-                               <a href="show/${book.id?c}">
+                               <a href="books/show/${book.id?c}">
                                    <img class="card-img-top"
                                         style="max-height: 300px;max-width: 200px;"
                                         src="<@spring.url "/file/"/>${book.titlePageId???then(book.titlePageId?c, "")}">
@@ -144,7 +144,7 @@
                    <div class="col-6 col-sm-4 col-md-3 col-xs-2 my-auto text-center" style="overflow: hidden;padding-left: 2%">
                        <div class="card" style="padding-left: 2%">
                            <div class="center-block" style="width: 100%;height: auto">
-                               <a href="show/${book.id?c}">
+                               <a href="books/show/${book.id?c}">
                                    <img class="card-img-top"
                                         style="max-height: 300px;max-width: 200px;"
                                         src="<@spring.url "/file/"/>${book.titlePageId???then(book.titlePageId?c, "")}">

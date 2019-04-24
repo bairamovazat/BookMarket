@@ -118,6 +118,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void delete(Long bookId){
+        bookRepository.deleteById(bookId);
+    }
+
+    @Override
     @Transactional
     public List<BookDto> getEditorChoseBooks(){
         return getRandomBooks(4).stream().map(BookDto::from).collect(Collectors.toList());
@@ -147,4 +152,5 @@ public class BookServiceImpl implements BookService {
         int currentPage = random.nextInt((int)pageCount);
         return bookRepository.findAll(PageRequest.of(currentPage, count)).getContent();
     }
+
 }
