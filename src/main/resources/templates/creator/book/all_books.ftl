@@ -22,6 +22,7 @@
                     <th scope="col">Категория</th>
                     <th scope="col">Издательство</th>
                     <th scope="col">Цена</th>
+                    <th scope="col">Действие</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,10 @@
                     <td>${book.categoryName!}</td>
                     <td>${book.publisherName!}</td>
                     <td>${book.price!}</td>
+                    <th scope="col">
+                        <a href="delete/${book.id}">Удалить</a>
+                    </th>
+
                 </tr>
                 </#list>
                 </tbody>

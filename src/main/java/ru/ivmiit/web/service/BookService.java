@@ -36,6 +36,8 @@ public interface BookService {
     @Transactional
     void save(BookForm bookForm);
 
+    void delete(Long bookId);
+
     List<BookDto> getEditorChoseBooks();
 
     List<BookDto> getSaleBooks();

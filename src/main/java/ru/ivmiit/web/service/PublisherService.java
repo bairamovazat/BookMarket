@@ -26,6 +26,8 @@ public interface PublisherService {
     @Transactional
     void save(PublisherForm publisherForm);
 
+    void delete(Long bookId);
+
     @Transactional
     List<Publisher> getAllCategories();
 }

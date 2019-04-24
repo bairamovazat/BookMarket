@@ -79,6 +79,11 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
+    public void delete(Long bookId){
+        publisherRepository.deleteById(bookId);
+    }
+
+    @Override
     @Transactional
     public List<Publisher> getAllCategories() {
         return publisherRepository.findAll();

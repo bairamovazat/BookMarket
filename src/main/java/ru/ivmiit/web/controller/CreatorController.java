@@ -8,7 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.ivmiit.web.forms.BookCategoryForm;
 import ru.ivmiit.web.forms.BookForm;
@@ -67,7 +66,7 @@ public class CreatorController {
     }
 
     @GetMapping
-    public String getMainPage(@ModelAttribute("model") ModelMap model, Authentication authentication){
+    public String getMainPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
         authenticationService.putUserToModelIfExists(authentication, model);
         return "creator/main_page";
     }
@@ -85,9 +84,9 @@ public class CreatorController {
 
     @GetMapping("/books/create")
     public String getBook(@ModelAttribute("model") ModelMap model, Authentication authentication,
-                              @RequestParam("id") Optional<Long> categoryId) {
+                          @RequestParam("id") Optional<Long> bookId) {
         authenticationService.putUserToModelIfExists(authentication, model);
-        categoryId.ifPresent(id -> model.addAttribute("book", bookService.getBookDto(id)));
+        bookId.ifPresent(id -> model.addAttribute("book", bookService.getBookDto(id)));
         model.addAttribute("categories", bookCategoryService.getAllCategories());
         model.addAttribute("publishers", publisherService.getAllCategories());
         return "creator/book/create_book";
@@ -95,18 +94,29 @@ public class CreatorController {
 
     @PostMapping("/books/create")
     public String createBook(@Valid @ModelAttribute("bookForm") BookForm bookForm,
-                                 BindingResult errors, RedirectAttributes attributes) {
+                             BindingResult errors, RedirectAttributes attributes) {
         if (errors.hasErrors()) {
             attributes.addFlashAttribute("errors", errors.getAllErrors()
                     .stream()
                     .map(DefaultMessageSourceResolvable::getDefaultMessage)
                     .collect(Collectors.toList()));
             return "redirect:create";
-        }else  {
+        } else {
             bookService.save(bookForm);
             attributes.addFlashAttribute("success", "Успешно!");
             return "redirect:create";
         }
+    }
+
+    @GetMapping("/books/delete/{id}")
+    public String deleteBook(@PathVariable("id") Long id, RedirectAttributes attributes) {
+        try {
+            bookService.delete(id);
+        } catch (Exception e) {
+            attributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:/creator/books/all";
+
     }
 
     @GetMapping("/categories/all")
@@ -134,7 +144,7 @@ public class CreatorController {
         if (errors.hasErrors()) {
             attributes.addFlashAttribute("error", errors.getAllErrors().get(0).getDefaultMessage());
             return "redirect:create";
-        }else  {
+        } else {
             bookCategoryService.save(bookCategoryForm);
             attributes.addFlashAttribute("success", "Успешно!");
             return "redirect:create";
@@ -143,7 +153,7 @@ public class CreatorController {
 
     @GetMapping("/publishers/all")
     public String getPublisherPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
-                                    @RequestParam("page") Optional<Integer> page) {
+                                   @RequestParam("page") Optional<Integer> page) {
         authenticationService.putUserToModelIfExists(authentication, model);
         int currentPage = page.orElse(0);
         model.addAttribute("publishers", publisherService.getPublishers(currentPage));
@@ -154,7 +164,7 @@ public class CreatorController {
 
     @GetMapping("/publishers/create")
     public String getPublisher(@ModelAttribute("model") ModelMap model, Authentication authentication,
-                              @RequestParam("id") Optional<Long> categoryId) {
+                               @RequestParam("id") Optional<Long> categoryId) {
         authenticationService.putUserToModelIfExists(authentication, model);
         categoryId.ifPresent(id -> model.addAttribute("publisher", publisherService.getPublisher(id)));
         return "creator/publisher/create_publisher";
@@ -162,11 +172,11 @@ public class CreatorController {
 
     @PostMapping("/publishers/create")
     public String createPublisher(@Valid @ModelAttribute("publisherForm") PublisherForm publisherForm,
-                                 BindingResult errors, RedirectAttributes attributes) {
+                                  BindingResult errors, RedirectAttributes attributes) {
         if (errors.hasErrors()) {
             attributes.addFlashAttribute("error", errors.getAllErrors().get(0).getDefaultMessage());
             return "redirect:create";
-        }else  {
+        } else {
             publisherService.save(publisherForm);
             attributes.addFlashAttribute("success", "Успешно!");
             return "redirect:create";
@@ -175,7 +185,7 @@ public class CreatorController {
 
     @GetMapping("/orders/all")
     public String getOrdersPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
-                                   @RequestParam("page") Optional<Integer> page) {
+                                @RequestParam("page") Optional<Integer> page) {
         authenticationService.putUserToModelIfExists(authentication, model);
         int currentPage = page.orElse(0);
         model.addAttribute("orders", orderService.getAllOrders(currentPage));
@@ -185,7 +195,7 @@ public class CreatorController {
     }
 
     @GetMapping("/orders/change")
-    public String changeOrderStatus(@RequestParam("status")String orderStatus,
+    public String changeOrderStatus(@RequestParam("status") String orderStatus,
                                     @RequestParam("id") Long orderId,
                                     @RequestParam("redirectPage") Long page) {
         orderService.changeStatus(orderId, OrderStatus.valueOf(orderStatus));
