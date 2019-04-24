@@ -33,6 +33,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private String siteUrl;
 
     private String emailMessage = "Здравствуйте! Перейдите по ссылке, чтобы подтвердить аккаунт %s/confirm/%s";
+    private String restoreMessage = "Здравствуйте! Перейдите по ссылке, чтобы востановить пароль %s/restore/%s";
 
     @Override
     @Transactional
@@ -53,4 +54,24 @@ public class RegistrationServiceImpl implements RegistrationService {
         emailService.sendMail(String.format(emailMessage, siteUrl, uuid),"Подтверждение аккаунта",userForm.getEmail());
         userRepository.save(newUser);
     }
+
+
+    @Override
+    @Transactional
+    public void sendRestoreCode(String login){
+        User user = userRepository.findOneByLogin(login).orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
+        UUID uuid = UUID.randomUUID();
+        user.setUuid(uuid);
+        userRepository.save(user);
+        emailService.sendMail(String.format(restoreMessage, siteUrl, uuid),"Востановление пароля", user.getEmail());
+    }
+
+    @Override
+    @Transactional
+    public void restorePassword(UUID uuid, String newPassword){
+        User user = userRepository.findByUuid(uuid).orElseThrow(() -> new IllegalArgumentException("Неверный код"));
+        user.setHashPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
 }

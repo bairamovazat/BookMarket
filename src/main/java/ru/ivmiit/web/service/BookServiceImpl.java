@@ -20,6 +20,7 @@ import ru.ivmiit.web.utils.TaskUtils;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 
@@ -46,6 +47,7 @@ public class BookServiceImpl implements BookService {
     private static int paginationPagesCount = 5;
 
     private static int defaultElementsInPage = 15;
+    private static Random random = new Random();
 
     @Override
     @Transactional
@@ -115,4 +117,34 @@ public class BookServiceImpl implements BookService {
         bookRepository.save(book);
     }
 
+    @Override
+    @Transactional
+    public List<BookDto> getEditorChoseBooks(){
+        return getRandomBooks(4).stream().map(BookDto::from).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public List<BookDto> getSaleBooks(){
+        return getRandomBooks(4).stream().map(BookDto::from).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public List<BookDto> getDayBooks(){
+        return getRandomBooks(4).stream().map(BookDto::from).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public List<BookDto> getFictionBooks(){
+        return getRandomBooks(4).stream().map(BookDto::from).collect(Collectors.toList());
+    }
+
+    public List<Book> getRandomBooks(int count){
+        long bookCount = bookRepository.count();
+        long pageCount = bookCount / count;
+        int currentPage = random.nextInt((int)pageCount);
+        return bookRepository.findAll(PageRequest.of(currentPage, count)).getContent();
+    }
 }

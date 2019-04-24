@@ -8,6 +8,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.ivmiit.web.forms.UserRegistrationForm;
+import ru.ivmiit.web.forms.UserRestorePasswordForm;
 import ru.ivmiit.web.model.User;
 import ru.ivmiit.web.repository.UserRepository;
 import ru.ivmiit.web.security.details.State;
@@ -30,7 +31,7 @@ import java.util.UUID;
 public class RegistrationController {
 
     @Autowired
-    private RegistrationService service;
+    private RegistrationService registrationService;
 
     @Autowired
     private UserRegistrationFormValidator userRegistrationFormValidator;
@@ -65,7 +66,7 @@ public class RegistrationController {
             attributes.addFlashAttribute("error", errors.getAllErrors().get(0).getDefaultMessage());
             return "redirect:/sign-up";
         }
-        service.register(userRegistrationForm);
+        registrationService.register(userRegistrationForm);
         authenticationService.putUserToModelIfExists(null, model);
         return "success_registration";
     }
@@ -75,4 +76,53 @@ public class RegistrationController {
         authenticationService.putUserToModelIfExists(null, model);
         return "sign_up";
     }
+
+
+    @GetMapping("/restore")
+    public String restorePasswordPage(@ModelAttribute("model") ModelMap model) {
+        authenticationService.putUserToModelIfExists(null, model);
+        return "restore/restore";
+    }
+
+    @PostMapping("/restore")
+    public String restorePassword(RedirectAttributes attributes, @RequestParam("login") String login) {
+        try {
+            registrationService.sendRestoreCode(login);
+            attributes.addFlashAttribute("success", "Успешно!");
+        } catch (IllegalArgumentException e) {
+            attributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:restore";
+    }
+
+    @GetMapping("/restore/{uuid}")
+    public String restorePasswordUuidPage(@ModelAttribute("model") ModelMap model,
+                                          @PathVariable("uuid") String uuid) {
+        if (!userRepository.findByUuid(UUID.fromString(uuid)).isPresent()) {
+            return "redirect:/";
+        }
+
+        authenticationService.putUserToModelIfExists(null, model);
+        model.addAttribute("uuid", uuid);
+        return "restore/restore_create_password";
+    }
+
+    @PostMapping("/restore/{uuid}")
+    public String restorePasswordUuidPage(UserRestorePasswordForm restoreForm,
+                                          @PathVariable("uuid") String uuid,
+                                          @ModelAttribute("model") ModelMap model,
+                                          RedirectAttributes attributes) {
+        if (!userRepository.findByUuid(UUID.fromString(uuid)).isPresent()) {
+            return "redirect:/";
+        }
+
+        if (!restoreForm.getPassword().equals(restoreForm.getPasswordRepeat())) {
+            attributes.addFlashAttribute("error", "Пароли не совпадают");
+            return "redirect:/restore/" + uuid;
+        }
+
+        registrationService.restorePassword(UUID.fromString(uuid), restoreForm.getPassword());
+        return "redirect:/login";
+    }
+
 }

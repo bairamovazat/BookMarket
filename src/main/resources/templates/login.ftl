@@ -36,6 +36,8 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">Всё ещё не зарегистрированы? <a href="sign-up">Регистрация</a></p>
+                    <p class="card-text">Забыли пароль? <a href="restore">Востановление</a></p>
+
                 </div>
             </div>
         </div>

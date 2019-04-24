@@ -39,14 +39,6 @@ public class Book {
     private Integer count;
     private Integer rating;
 
-    @ManyToOne
-    @JoinColumn(name = "discount_id")
-    private Discount discount;
-
-    public Double getPriceWithDiscount(){
-        return this.discount == null ? this.price : (this.price / 100) * (100 - this.discount.getSalePercent());
-    }
-
     public static Book from(BookForm form){
         return Book.builder()
                 .name(form.getName())
