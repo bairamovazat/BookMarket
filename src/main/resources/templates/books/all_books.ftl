@@ -29,7 +29,7 @@
                                 <a class="dropdown-item" href="<@spring.url "/"/>books/all">Детская литература</a>
                                 <a class="dropdown-item" href="<@spring.url "/"/>books/all">Медицина</a>
                                 <a class="dropdown-item" href="<@spring.url "/"/>books/all">Право</a>
-                                <a class="dropdown-item" href="<@spring.url "/"/>books/all">Прикладные науки</a>
+                                <a class="dropdown-item" href="<@spring.url "/"/>books/all">Прикладная наука</a>
                                 <a class="dropdown-item" href="<@spring.url "/"/>books/all">Филология</a>
                                 <a class="dropdown-item" href="<@spring.url "/"/>books/all">Художетсвенная литература</a>
                             </div>
