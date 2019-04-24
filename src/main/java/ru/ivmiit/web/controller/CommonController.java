@@ -12,6 +12,7 @@ import ru.ivmiit.web.service.AuthenticationService;
 @Controller
 @RequestMapping("/common")
 public class CommonController {
+
     @Autowired
     private AuthenticationService authenticationService;
 

@@ -11,7 +11,6 @@
         <div class="col-12">
             <div class="row">
                 <#list model.books as book>
-
                     <div class="col-6 col-sm-4 col-md-3 col-xs-2 my-auto text-center" STYLE="overflow: hidden;padding-left: 2%">
                         <div class="card" STYLE="padding-left: 2%">
                             <div class="center-block" style="width: 100%;height: auto">

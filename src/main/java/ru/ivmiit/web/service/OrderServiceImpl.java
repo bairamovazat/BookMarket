@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
                 .map(OrderBook::getId)
                 .collect(Collectors.toList()));
 
-        Double price = allBooks.stream().mapToDouble(Book::getPriceWithDiscount).sum();
+        Double price = allBooks.stream().mapToDouble(book -> book.getCount() * book.getPrice()).sum();
 
         Order order = Order.builder()
                 .user(user)
