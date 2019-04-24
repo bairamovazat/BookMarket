@@ -18,13 +18,17 @@ public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String code;
+
     @Column(nullable = false)
     private Double salePercent;
 
     private Boolean enabled;
     @Column(nullable =  false)
+
+    private Date startDate;
+
     private Date endDate;
 
-    @OneToMany(mappedBy = "discount")
-    private List<Book> books;
 }

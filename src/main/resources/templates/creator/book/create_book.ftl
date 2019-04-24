@@ -61,14 +61,22 @@
 
                 <div class="form-group">
                     <label>Выберите обложку</label>
-                    <input name="titlePage" id="titlePage" accept="image/*" type="file" class="form-control"/>
+                    <input name="titlePage" id="titlePage" accept="image/*"
+                           type="file"
+                           class="form-control"
+                    />
+                    <#--<script type="text/javascript">-->
+                        <#--document.addEventListener("DOMContentLoaded", function(event) {-->
+                            <#--$("#titlePage").files. = "<@spring.url "/"/>file/${model.book.titlePageId?c}";-->
+                        <#--});-->
+                    <#--</script>-->
                 </div>
 
                 <div class="form-group">
                     <label>Выберите категорию</label>
                     <select name="categoryId" class="form-control">
                         <#list model.categories as category>
-                            <option value="${category.id}"<#if (model.book?? && category.id == model.book.categoryId)>
+                            <option value="${category.id}"<#if (model.book?? && category.name == model.book.categoryName)>
                                 selected="selected"</#if>>${category.name}</option>
                         </#list>
                     </select>
@@ -78,7 +86,7 @@
                     <label>Выберите издателя</label>
                     <select name="publisherId" class="form-control">
                         <#list model.publishers as publisher>
-                            <option value="${publisher.id}"<#if (model.book?? && publisher.id == model.book.publisherId)>
+                            <option value="${publisher.id}"<#if (model.book?? && publisher.name == model.book.publisherName)>
                                 selected="selected"</#if>>${publisher.name}</option>
                         </#list>
                     </select>
@@ -93,19 +101,19 @@
                 <div class="form-group">
                     <label>Цена</label>
                     <input name="price" type="number" min="1" class="form-control"
-                           placeholder="Описание">${model.book???then(model.book.price, "")}
+                           placeholder="Цена" value="${model.book???then(model.book.price?c, "")}">
                 </div>
 
                 <div class="form-group">
                     <label>Количество</label>
                     <input name="count" type="number" min="1" class="form-control"
-                           placeholder="Описание">${model.book???then(model.book.count, "")}
+                           placeholder="Количество" value="${model.book???then(model.book.count?c, "")}">
                 </div>
 
                 <div class="form-group">
                     <label>Рейтинг</label>
                     <input name="rating" type="number" min="1" class="form-control"
-                           placeholder="Описание">${model.book???then(model.book.rating, "")}
+                           placeholder="Рейтинг" value="${model.book???then(model.book.rating?c, "")}">
                 </div>
 
                 <div class="form-group">
