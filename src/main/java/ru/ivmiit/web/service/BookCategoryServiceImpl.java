@@ -79,6 +79,11 @@ public class BookCategoryServiceImpl implements BookCategoryService {
     }
 
     @Override
+    public void delete(Long bookId){
+        bookCategoryRepository.deleteById(bookId);
+    }
+
+    @Override
     @Transactional
     public List<BookCategory> getAllCategories() {
         return bookCategoryRepository.findAll();

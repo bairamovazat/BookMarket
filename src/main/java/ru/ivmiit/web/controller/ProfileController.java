@@ -15,7 +15,6 @@ public class ProfileController {
     @Autowired
     private AuthenticationService authenticationService;
 
-
     @GetMapping
     public String getProfilePage(Authentication authentication, @ModelAttribute("model") ModelMap model) {
         authenticationService.putUserToModelIfExists(authentication, model);
