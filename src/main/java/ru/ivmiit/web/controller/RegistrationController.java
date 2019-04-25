@@ -122,6 +122,7 @@ public class RegistrationController {
         }
 
         registrationService.restorePassword(UUID.fromString(uuid), restoreForm.getPassword());
+        attributes.addFlashAttribute("success", "Код отправлен на почту");
         return "redirect:/login";
     }
 
