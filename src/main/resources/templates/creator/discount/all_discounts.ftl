@@ -1,46 +1,49 @@
+
+
 <#ftl encoding='UTF-8'>
 <!DOCTYPE html>
 <html>
-     <#include "head.ftl">
+     <#include "../../head.ftl">
 <body>
-<#include "header.ftl">
+<#include "../../header.ftl">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-1 col-lg-2 col-xs-3">
 
         </div>
         <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xs-6">
+            <div style="text-align: center">
+                <h2>Скидки <a href="create"><button class="btn btn-sm btn-primary">+</button></a></h2>
+            </div>
             <table class="table table-striped">
                 <thead>
                 <tr>
-                <#--<th scope="col">#</th>-->
-                    <th scope="col">Адрес</th>
-                    <th scope="col">Статус</th>
-                    <th scope="col">Оплата после доставки</th>
-                    <th scope="col">Дата создания</th>
-                    <th scope="col">Цена</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Код</th>
                     <th scope="col">Скидка</th>
+                    <th scope="col">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
-                <#list model.orders as order>
+                <#list model.discounts as discount>
                 <tr>
-                <#--<th scope="row"><a href="${'create?id=' + order.id}">${order.id!}</a></th>-->
-                    <td>${order.address!}</td>
-                    <td>${order.status!}</td>
-                    <td>${order.payAfterDelivery???string("Да", "Нет")}</td>
-                    <td>${order.createDate!}</td>
-                    <td>${order.price!} Руб</td>
-                    <td>${order.salePercent???then(order.salePercent + "%", "-")}</td>
+                    <th scope="row"><a href="${'create?id=' + discount.id}">${discount.id!}</a></th>
+                    <td>${discount.code?html}</td>
+                    <td>${discount.salePercent?c}</td>
+                    <td><a href="${'create?id=' + discount.id}">Изменить</a>
+                        <a href="${'delete/' + discount.id}">Удалить</a>
+                    </td>
                 </tr>
                 </#list>
                 </tbody>
             </table>
+
             <nav aria-label="navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ${((model.currentPage == 0)?string("disabled",""))}">
                         <a class="page-link" href="?page=${model.currentPage - 1}" tabindex="-1">Previous</a>
                     </li>
+
                     <#list model.pageList as page>
                         <li class="page-item ${((page == model.currentPage)?string("active",""))}">
                             <a class="page-link" href="?page=${page}">
@@ -63,6 +66,6 @@
     </div>
 </div>
 
-<#include "footer.ftl">
+<#include "../../footer.ftl">
 </body>
 </html>

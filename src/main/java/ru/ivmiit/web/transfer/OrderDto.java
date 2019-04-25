@@ -34,6 +34,8 @@ public class OrderDto {
 
     private Double price;
 
+    private Double salePercent;
+
     private List<BookDto> books;
 
     public static OrderDto from(Order order){
@@ -47,6 +49,7 @@ public class OrderDto {
                 .deliveredDate(order.getDeliveredDate())
                 .comment(order.getComment())
                 .price(order.getPrice())
+                .salePercent(order.getDiscount() == null? null : order.getDiscount().getSalePercent())
                 .books(
                         order.getBooks()
                         .stream()

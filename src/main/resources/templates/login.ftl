@@ -27,10 +27,9 @@
                 <div class="form-group">
                     <label for="inputLogin">Введите пароль</label>
                     <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Пароль">
-                <#--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="submit" value="Авторизоваться" onclick="putBasket([])">
+                    <input class="form-control" type="submit" value="Авторизоваться">
                 </div>
             </form>
             <div class="card">

@@ -24,11 +24,6 @@ public class Discount {
     @Column(nullable = false)
     private Double salePercent;
 
-    private Boolean enabled;
-    @Column(nullable =  false)
-
-    private Date startDate;
-
-    private Date endDate;
+    private Boolean deleted;
 
 }

@@ -51,12 +51,18 @@
                 </div>
                 <div class="form-group">
                     <label>Введите адрес доставки</label>
-                    <input maxlength="254" name="address" class="form-control" placeholder="г.Казань. Авангардная 123"/>
+                    <input maxlength="255" name="address" class="form-control" placeholder="г.Казань. Авангардная 123"/>
                 </div>
                 <div class="form-group">
                     <label>Введите комментарий</label>
                     <input maxlength="512" name="comment" class="form-control" placeholder="Комментарий"/>
                 </div>
+
+                <div class="form-group">
+                    <label>Введите промокод</label>
+                    <input maxlength="255" name="saleCode" class="form-control" placeholder="Промокод"/>
+                </div>
+
                 <div style="text-align: right; display: flex; flex-direction: row; justify-content: flex-end">
                     <h4 id="totalPrice" style="padding-top: 4px; padding-right: 4px;">
                         Итого: 0

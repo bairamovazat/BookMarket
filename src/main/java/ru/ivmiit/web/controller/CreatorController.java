@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.ivmiit.web.forms.BookCategoryForm;
 import ru.ivmiit.web.forms.BookForm;
+import ru.ivmiit.web.forms.DiscountForm;
 import ru.ivmiit.web.forms.PublisherForm;
 import ru.ivmiit.web.model.BookCategory;
 import ru.ivmiit.web.model.OrderStatus;
@@ -18,6 +19,7 @@ import ru.ivmiit.web.repository.BookCategoryRepository;
 import ru.ivmiit.web.service.*;
 import ru.ivmiit.web.validators.BookCategoryFormValidator;
 import ru.ivmiit.web.validators.BookFormValidator;
+import ru.ivmiit.web.validators.DiscountFormValidator;
 import ru.ivmiit.web.validators.PublisherFormValidator;
 
 import javax.validation.Valid;
@@ -41,6 +43,9 @@ public class CreatorController {
     private PublisherService publisherService;
 
     @Autowired
+    private DiscountService discountService;
+
+    @Autowired
     private OrderService orderService;
 
     @Autowired
@@ -55,6 +60,9 @@ public class CreatorController {
     @Autowired
     private BookFormValidator bookFormValidator;
 
+    @Autowired
+    private DiscountFormValidator discountFormValidator;
+
     @InitBinder("bookCategoryForm")
     public void initCategoryValidator(WebDataBinder binder) {
         binder.addValidators(bookCategoryFormValidator);
@@ -68,6 +76,11 @@ public class CreatorController {
     @InitBinder("bookForm")
     public void initBookValidator(WebDataBinder binder) {
         binder.addValidators(bookFormValidator);
+    }
+
+    @InitBinder("discountForm")
+    public void initDiscountForm(WebDataBinder binder) {
+        binder.addValidators(discountFormValidator);
     }
 
     @GetMapping
@@ -208,6 +221,50 @@ public class CreatorController {
                                     @RequestParam("redirectPage") Long page) {
         orderService.changeStatus(orderId, OrderStatus.valueOf(orderStatus));
         return "redirect:all?page=" + page;
+    }
+
+
+    @GetMapping("/discounts/all")
+    public String getDiscountPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
+                                   @RequestParam("page") Optional<Integer> page) {
+        authenticationService.putUserToModelIfExists(authentication, model);
+        int currentPage = page.orElse(0);
+        model.addAttribute("discounts", discountService.getDiscounts(currentPage));
+        model.addAttribute("pageList", discountService.getPageList(currentPage));
+        model.addAttribute("currentPage", currentPage);
+        return "creator/discount/all_discounts";
+    }
+
+    @GetMapping("/discounts/create")
+    public String getDiscount(@ModelAttribute("model") ModelMap model, Authentication authentication,
+                               @RequestParam("id") Optional<Long> categoryId) {
+        authenticationService.putUserToModelIfExists(authentication, model);
+        categoryId.ifPresent(id -> model.addAttribute("discount", discountService.getDiscount(id)));
+        return "creator/discount/create_discount";
+    }
+
+    @PostMapping("/discounts/create")
+    public String createDiscount(@Valid @ModelAttribute("discountForm") DiscountForm discountForm,
+                                  BindingResult errors, RedirectAttributes attributes) {
+        if (errors.hasErrors()) {
+            attributes.addFlashAttribute("error", errors.getAllErrors().get(0).getDefaultMessage());
+            return "redirect:create";
+        } else {
+            discountService.save(discountForm);
+            attributes.addFlashAttribute("success", "Успешно!");
+            return "redirect:create";
+        }
+    }
+
+    @GetMapping("/discounts/delete/{id}")
+    public String deleteDiscount(@PathVariable("id") Long id, RedirectAttributes attributes) {
+        try {
+            discountService.delete(id);
+        } catch (Exception e) {
+            attributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:/creator/discounts/all";
+
     }
 
 }

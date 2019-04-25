@@ -42,6 +42,10 @@ public class Order {
 
     private Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "discount_id")
+    private Discount discount;
+
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<OrdersBooks> books;
 
