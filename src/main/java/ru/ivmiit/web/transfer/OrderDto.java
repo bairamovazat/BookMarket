@@ -36,6 +36,8 @@ public class OrderDto {
 
     private Double salePercent;
 
+    private UserDto user;
+
     private List<BookDto> books;
 
     public static OrderDto from(Order order){
@@ -56,6 +58,7 @@ public class OrderDto {
                         .map(b -> BookDto.from(b.getBook()))
                         .collect(Collectors.toList())
                 )
+                .user(UserDto.from(order.getUser()))
                 .build();
         return orderDto;
     }

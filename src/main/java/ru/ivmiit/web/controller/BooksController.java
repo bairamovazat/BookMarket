@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.ivmiit.web.model.BookCategory;
 import ru.ivmiit.web.repository.BookCategoryRepository;
 import ru.ivmiit.web.service.AuthenticationService;
@@ -51,4 +52,14 @@ public class BooksController {
         model.addAttribute("book", bookService.getBookDto(bookId));
         return "books/book_page";
     }
+
+    @PostMapping("/comment/{id}")
+    public String sendComment(@PathVariable("id") Long bookId, @RequestParam("text") String text,
+                              RedirectAttributes redirectAttributes) {
+        if (text.length() < 25 || text.length() > 2048) {
+            redirectAttributes.addFlashAttribute("error", "Длинна комментария от 25 до 2048 символов");
+        }else{
+            bookService.sendComment(bookId, text);
+        }
+        return "redirect:/books/show/" + bookId;    }
 }

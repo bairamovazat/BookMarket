@@ -24,6 +24,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return getUserByAuthentication(authentication);
     }
 
+
     @Override
     public User getUserByAuthentication(Authentication authentication) {
         if(authentication == null){

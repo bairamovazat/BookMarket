@@ -54,7 +54,7 @@ public class RegistrationController {
             User user = optionalUser.get();
             user.setState(State.CONFIRMED);
             userRepository.save(user);
-            attributes.addFlashAttribute("error", "Пользователь подтверждён");
+            attributes.addFlashAttribute("success", "Пользователь подтверждён");
         }
         return "redirect:/login";
     }

@@ -55,6 +55,22 @@ public class RegistrationServiceImpl implements RegistrationService {
         userRepository.save(newUser);
     }
 
+    @Override
+    @Transactional
+    public void changeUserPassword(User user, String newPassword){
+        user.setHashPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void changeUserEmail(User user, String newEmail){
+        user.setEmail(newEmail);
+        UUID uuid = UUID.randomUUID();
+        user.setUuid(uuid);
+        userRepository.save(user);
+        emailService.sendMail(String.format(emailMessage, siteUrl, uuid),"Подтверждение аккаунта", newEmail);
+    }
 
     @Override
     @Transactional
