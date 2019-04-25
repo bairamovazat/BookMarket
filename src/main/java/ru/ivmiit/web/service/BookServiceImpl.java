@@ -20,6 +20,7 @@ import ru.ivmiit.web.transfer.BookDto;
 import ru.ivmiit.web.utils.TaskUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -173,6 +174,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> getRandomBooks(int count){
         long bookCount = bookRepository.count();
         long pageCount = bookCount / count;
+        if(pageCount == 0){
+            return new ArrayList<>();
+        }
         int currentPage = random.nextInt((int)pageCount);
         return bookRepository.findAll(PageRequest.of(currentPage, count)).getContent();
     }
