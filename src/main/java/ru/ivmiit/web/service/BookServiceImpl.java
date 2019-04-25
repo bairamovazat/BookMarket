@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import ru.ivmiit.web.utils.TaskUtils;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -51,37 +53,59 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public List<Book> getBooks(int page) {
-        return getBooks(page, defaultElementsInPage);
+    public List<Book> getBooks(int page, String nameContains, BookCategory bookCategory) {
+        return getBooks(page, defaultElementsInPage, nameContains, bookCategory);
+    }
+
+
+    @Override
+    @Transactional
+    public List<Book> getBooks(int page, int count, String nameContains, BookCategory bookCategory) {
+        Pageable pageable = PageRequest.of(page, count, new Sort(Sort.Direction.ASC, "id"));
+        if(nameContains != null && bookCategory != null){
+            return bookRepository.findAllByCategoryAndNameContains(bookCategory, nameContains, pageable).getContent();
+        }else if(nameContains != null){
+            return bookRepository.findAllByNameContains(nameContains, pageable).getContent();
+        } else if(bookCategory != null){
+            return bookRepository.findAllByCategory(bookCategory, pageable).getContent();
+        }else {
+            return bookRepository.findAll(PageRequest.of(page, count, new Sort(Sort.Direction.ASC, "id"))).getContent();
+        }
     }
 
     @Override
     @Transactional
-    public List<Book> getBooks(int page, int count) {
-        return bookRepository.findAll(PageRequest.of(page, count, new Sort(Sort.Direction.ASC, "id"))).getContent();
+    public List<BookDto> getBooksDto(int page, String nameContains, BookCategory bookCategory) {
+        return getBooks(page, nameContains, bookCategory).stream().map(BookDto::from).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public List<BookDto> getBooksDto(int page) {
-        return getBooks(page).stream().map(BookDto::from).collect(Collectors.toList());
+    public List<BookDto> getBooksDto(int page, int count, String nameContains, BookCategory bookCategory) {
+        return getBooks(page, count, nameContains, bookCategory).stream().map(BookDto::from).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public List<BookDto> getBooksDto(int page, int count) {
-        return getBooks(page, count).stream().map(BookDto::from).collect(Collectors.toList());
+    public List<Integer> getPageList(int currentPage, String nameContains, BookCategory bookCategory) {
+        return getPageList(currentPage, defaultElementsInPage, nameContains, bookCategory);
     }
 
     @Override
-    @Transactional
-    public List<Integer> getPageList(int currentPage) {
-        return getPageList(currentPage, defaultElementsInPage);
-    }
+    public List<Integer> getPageList(int currentPage, int elementsInPage, String nameContains, BookCategory bookCategory) {
+        Long booksCount;
 
-    @Override
-    public List<Integer> getPageList(int currentPage, int elementsInPage) {
-        int pageCount = (int) Math.ceil(((double) bookRepository.count()) / elementsInPage);
+        if(nameContains != null && bookCategory != null){
+            booksCount = bookRepository.countAllByCategoryAndNameContains(bookCategory, nameContains);
+        }else if(nameContains != null){
+            booksCount = bookRepository.countAllByNameContains(nameContains);
+        } else if(bookCategory != null){
+            booksCount = bookRepository.countAllByCategory(bookCategory);
+        }else {
+            booksCount = bookRepository.count();
+        }
+
+        int pageCount = (int) Math.ceil(((double) booksCount) / elementsInPage);
         int maxPage = pageCount - 1;
         return TaskUtils.getPageList(currentPage, paginationPagesCount, maxPage);
     }

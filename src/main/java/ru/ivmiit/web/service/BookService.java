@@ -11,21 +11,21 @@ import java.util.List;
 public interface BookService {
 
     @Transactional
-    List<Book> getBooks(int page);
+    List<Book> getBooks(int page, String nameContains, BookCategory bookCategory);
 
     @Transactional
-    List<Book> getBooks(int page, int count);
+    List<Book> getBooks(int page, int count, String nameContains, BookCategory bookCategory);
 
     @Transactional
-    List<BookDto> getBooksDto(int page);
+    List<BookDto> getBooksDto(int page, String nameContains, BookCategory bookCategory);
 
     @Transactional
-    List<BookDto> getBooksDto(int page, int count);
+    List<BookDto> getBooksDto(int page, int count, String nameContains, BookCategory bookCategory);
 
     @Transactional
-    List<Integer> getPageList(int currentPage);
+    List<Integer> getPageList(int currentPage, String nameContains, BookCategory bookCategory);
 
-    List<Integer> getPageList(int currentPage, int elementsInPage);
+    List<Integer> getPageList(int currentPage, int elementsInPage, String nameContains, BookCategory bookCategory);
 
     @Transactional
     Book getBook(Long id);

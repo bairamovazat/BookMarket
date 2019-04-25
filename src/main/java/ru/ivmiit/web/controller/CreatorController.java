@@ -12,7 +12,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.ivmiit.web.forms.BookCategoryForm;
 import ru.ivmiit.web.forms.BookForm;
 import ru.ivmiit.web.forms.PublisherForm;
+import ru.ivmiit.web.model.BookCategory;
 import ru.ivmiit.web.model.OrderStatus;
+import ru.ivmiit.web.repository.BookCategoryRepository;
 import ru.ivmiit.web.service.*;
 import ru.ivmiit.web.validators.BookCategoryFormValidator;
 import ru.ivmiit.web.validators.BookFormValidator;
@@ -40,6 +42,9 @@ public class CreatorController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private BookCategoryRepository bookCategoryRepository;
 
     @Autowired
     private BookCategoryFormValidator bookCategoryFormValidator;
@@ -73,11 +78,14 @@ public class CreatorController {
 
     @GetMapping("/books/all")
     public String getBooksPage(@ModelAttribute("model") ModelMap model, Authentication authentication,
-                               @RequestParam("page") Optional<Integer> page) {
+                               @RequestParam("page") Optional<Integer> page,
+                               @RequestParam(value = "query", required = false) String query,
+                               @RequestParam(value = "category", required = false) Long id) {
         authenticationService.putUserToModelIfExists(authentication, model);
         int currentPage = page.orElse(0);
-        model.addAttribute("books", bookService.getBooksDto(currentPage));
-        model.addAttribute("pageList", bookService.getPageList(currentPage));
+        BookCategory category = id == null ? null : bookCategoryRepository.findById(id).orElse(null);
+        model.addAttribute("books", bookService.getBooksDto(currentPage, query, category));
+        model.addAttribute("pageList", bookService.getPageList(currentPage, query, category));
         model.addAttribute("currentPage", currentPage);
         return "creator/book/all_books";
     }
