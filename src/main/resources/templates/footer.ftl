@@ -14,9 +14,8 @@
 
                 <ul class="list-unstyled">
                     <li><a href="<@spring.url "/"/>common/delivery">Доставка и оплата</a></li>
-                    <li><a href="#!">Новинки</a></li>
-                    <li><a href="#!">Вопрос-ответ</a></li>
-                    <li><a href="#!">Скидки</a></li>
+                    <li><a href="<@spring.url "/"/>question">Вопрос-ответ</a></li>
+                    <li><a href="<@spring.url "/"/>common/discount">Скидки</a></li>
                     <li><a href="<@spring.url "/"/>common/contacts">Контакты</a></li>
                 </ul>
             </div>
