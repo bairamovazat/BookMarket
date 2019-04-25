@@ -29,4 +29,9 @@ public class CommonController {
         return "common/contacts";
     }
 
+    @GetMapping("/discount")
+    public String getDiscountPage(@ModelAttribute("model") ModelMap model, Authentication authentication){
+        authenticationService.putUserToModelIfExists(authentication, model);
+        return "common/discount";
+    }
 }

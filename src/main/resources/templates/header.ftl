@@ -222,7 +222,7 @@
         <#--</div>-->
         <a class="p-2 w3-bar-item w3-button text-white nav-element" href="<@spring.url "/"/>common/delivery">Доставка и оплата</a>
         <a class="p-2 w3-bar-item w3-button text-white nav-element" href="<@spring.url "/"/>question">Вопрос-ответ</a>
-        <a class="p-2 w3-bar-item w3-button text-white nav-element" href="#">Скидка</a>
+        <a class="p-2 w3-bar-item w3-button text-white nav-element" href="<@spring.url "/"/>common/discount">Скидка</a>
         <a class="p-2 w3-bar-item w3-button text-white nav-element" href="<@spring.url "/"/>common/contacts">Контакты</a>
     </nav>
 </div>
