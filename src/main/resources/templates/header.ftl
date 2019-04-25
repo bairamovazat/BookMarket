@@ -201,8 +201,7 @@
            <#--id="navbarDropdownMenuLink"-->
            <#--data-toggle="dropdown"-->
            <#--aria-haspopup="true"-->
-           <#--aria-expanded="false"-->
-        >
+           <#--aria-expanded="false"-->>
             Книги
         </a>
         <#--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 20%; text-align: center">-->
