@@ -30,8 +30,8 @@ public class OrderFormValidator implements Validator {
         }
 
 
-        if (form.getSaleCode().length() < 3 || form.getSaleCode().length() > 255) {
-            errors.reject("saleCode", "Промокод должнен содержать от 3 до 255 символов");
+        if (form.getSaleCode().length() > 255) {
+            errors.reject("saleCode", "Промокод должнен содержать  до 255 символов");
         }
     }
 }
