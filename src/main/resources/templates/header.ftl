@@ -20,8 +20,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="collapsingNavbarLg">
-        <form class="form-inline" style="width: 60%;padding-left: 1%;">
-            <input class="form-control mr-sm-2" style="width: 80%; " type="search" placeholder="Search"
+        <form class="form-inline" style="width: 60%;padding-left: 1%; position: relative">
+            <input class="form-control" style="width:calc(99% - 74px); " type="search" placeholder="Search"
                    aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -197,25 +197,33 @@
 </nav>
 <div class="nav-scroller py-1 mb-2 w3-bar-block w3-card-2" style="background-color:#4b545c;">
     <nav class="nav d-flex justify-content-around">
-        <a class="p-2 w3-bar-item w3-button text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
+        <a class="p-2 w3-bar-item w3-button text-white nav-element"  href="<@spring.url "/"/>books/all"
+           <#--id="navbarDropdownMenuLink"-->
+           <#--data-toggle="dropdown"-->
+           <#--aria-haspopup="true"-->
+           <#--aria-expanded="false"-->
+        >
             Книги
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Воспитание</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Образование</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Дом.Быт</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Наука</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Детская литература</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Медицина</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Право</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Прикладные науки</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Филология</a>
-            <a class="dropdown-item" href="<@spring.url "/"/>books/all">Художетсвенная литература</a>
-        </div>
-        <a class="p-2 w3-bar-item w3-button text-white" href="<@spring.url "/"/>common/delivery">Доставка и оплата</a>
-        <a class="p-2 w3-bar-item w3-button text-white" href="#">Вопрос-ответ</a>
-        <a class="p-2 w3-bar-item w3-button text-white" href="#">Скидка</a>
-        <a class="p-2 w3-bar-item w3-button text-white" href="<@spring.url "/"/>common/contacts">Контакты</a>
+        <#--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 20%; text-align: center">-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Воспитание</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Образование</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Дом.Быт</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Наука</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Детская литература</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Медицина</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Право</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Прикладные науки</a>-->
+            <#--<a class="dropdown-item" href="<@spring.url "/"/>books/all">Филология</a>-->
+        <#--</div>-->
+        <a class="p-2 w3-bar-item w3-button text-white nav-element" href="<@spring.url "/"/>common/delivery">Доставка и оплата</a>
+        <a class="p-2 w3-bar-item w3-button text-white nav-element" href="#">Вопрос-ответ</a>
+        <a class="p-2 w3-bar-item w3-button text-white nav-element" href="#">Скидка</a>
+        <a class="p-2 w3-bar-item w3-button text-white nav-element" href="<@spring.url "/"/>common/contacts">Контакты</a>
     </nav>
 </div>
+<style type="text/css">
+    .nav-element{
+        width: 20%; text-align: center;
+    }
+</style>
