@@ -1,4 +1,5 @@
 <#import "spring.ftl" as spring />
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="<@spring.url ""/>">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="80"
