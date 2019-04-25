@@ -20,12 +20,12 @@
 
                 <div class="form-group">
                     <#if error??>
-                        <div class="alert alert-danger" role="alert">#{error}</div>
+                        <div class="alert alert-danger" role="alert">${error}</div>
                     </#if>
                 </div>
                 <div class="form-group">
-                    <#if sucess??>
-                        <div class="alert alert-danger" role="success">#{sucess}</div>
+                    <#if success??>
+                        <div class="alert alert-success" role="success">${success}</div>
                     </#if>
                 </div>
                 <div class="form-group">
