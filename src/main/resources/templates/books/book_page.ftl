@@ -41,13 +41,18 @@
         </div>
         <div class="col-md-1 mx-auto"></div>
     </div>
+    <#if model.user.isPresent()>
     <div class="row">
         <div class="col-1 mx-auto"></div>
         <div class="col-10 mx-auto">
-            <form>
+            <form action="../comment/${model.book.id}" method="post">
                 <div class="form-group">
+                    <#if error??>
+                        <div class="alert alert-danger" role="alert">${error}</div>
+                    </#if>
                     <p><h5>Добавить комментарий:<br></h5></p>
-                    <textarea class="form-control" id="comment" placeholder="Напишите комментарий к книге..."
+                    <textarea name="text" class="form-control" id="comment"
+                              placeholder="Напишите комментарий к книге..."
                               maxlength="2048" rows="5" style="width: 100%"></textarea>
                     <br><input type="submit" class="btn btn-primary form-control" value="Отправить"
                                style="float: right;"/>
@@ -56,21 +61,19 @@
         </div>
         <div class="col-1 mx-auto"></div>
     </div>
+    </#if>
     <hr>
     <div class="row">
         <div class="col-1 mx-auto"></div>
         <div class="col-10 mx-auto">
             <p><h5>Комментарии:<br></h5></p>
-            <div>
-                <p><b>Виталий</b><br>
-                    Хорошая книга. Очень помогла!<br>
-                    18.03.2019</p>
-            </div>
-            <div>
-                <p><b>Юлия</b><br>
-                    Приобрела по совету преподавателя. Все хорошо расписано, удобно готовиться к экзамену.<br>
-                    03.04.2019</p>
-            </div>
+                <#list model.book.comments as comment>
+                <div>
+                    <p><b>${comment.userName!}</b><br>
+                        ${comment.text!}<br>
+                        ${comment.createdDate!}</p>
+                </div>
+                </#list>
         </div>
         <div class="col-1 mx-auto"></div>
     </div>

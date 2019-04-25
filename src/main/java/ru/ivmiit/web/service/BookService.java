@@ -45,4 +45,6 @@ public interface BookService {
     List<BookDto> getDayBooks();
 
     List<BookDto> getFictionBooks();
+
+    void sendComment(Long bookId, String text);
 }

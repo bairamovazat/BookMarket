@@ -10,10 +10,6 @@
         display: inline-block;
     }
 
-    figcaption.ratings {
-        margin-top: 20px;
-    }
-
     figcaption.ratings a {
         color: #f1c40f;
         font-size: 11px;
@@ -24,62 +20,10 @@
         text-decoration: none;
     }
 
-    .divider {
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .emphasis {
-        border-top: 4px solid transparent;
-    }
-
-    .emphasis:hover {
-        border-top: 4px solid #1abc9c;
-    }
-
     .emphasis h2 {
         margin-bottom: 0;
     }
 
-    span.tags {
-        background: #1abc9c;
-        border-radius: 2px;
-        color: #f5f5f5;
-        font-weight: bold;
-        padding: 2px 4px;
-    }
-
-    .dropdown-menu {
-        background-color: #34495e;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        width: 250px;
-        margin-left: -125px;
-        left: 50%;
-    }
-
-    .dropdown-menu .divider {
-        background: none;
-    }
-
-    .dropdown-menu > li > a {
-        color: #f5f5f5;
-    }
-
-    .dropup .dropdown-menu {
-        margin-bottom: 10px;
-    }
-
-    .dropup .dropdown-menu:before {
-        content: "";
-        border-top: 10px solid #34495e;
-        border-right: 10px solid transparent;
-        border-left: 10px solid transparent;
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        margin-left: -10px;
-        z-index: 10;
-    }
 </style>
 <div class="container-fluid">
     <div class="row">
@@ -110,6 +54,30 @@
                                         <a href="admin">панель</a>
                                     </p>
                                  </#if>
+
+                                <div class="form-group">
+                                    <#if errors??>
+                                        <#list errors as error>
+                                              <div class="alert alert-danger" role="alert">${error}</div>
+                                        </#list>
+                                    </#if>
+                                </div>
+
+                                <div class="form-group">
+                                     <#if success??>
+                                         <div class="alert alert-success" role="alert">${success}</div>
+                                     </#if>
+                                </div>
+
+                                <button type="button" class="btn btn-primary"
+                                        data-toggle="modal" data-target="#changePassword">
+                                    Изменить пароль
+                                </button>
+
+                                <button type="button" class="btn btn-primary"
+                                        data-toggle="modal" data-target="#changeEmail">
+                                    Изменить почту
+                                </button>
                             </div>
                             <div class="col-xs-12 col-sm-4 text-center" style="padding-top: 25px;">
                                 <figure>
@@ -117,7 +85,6 @@
                                          class="img-circle img-responsive">
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -125,6 +92,73 @@
     </div>
     <div class="col-md-1 col-lg-2 col-xs-3">
 
+    </div>
+    <div class="modals">
+        <!-- Modal -->
+        <div class="modal fade" id="changePassword" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form class="form-group" action="profile/change/password" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Изменить пароль</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label>Введите текущий пароль</label>
+                                <input name="currentPassword" type="password" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Введите новый пароль</label>
+                                <input name="password" type="password" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Введите повтор нового пароля</label>
+                                <input name="passwordRepeat" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Изменить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="changeEmail" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form class="form-group" action="profile/change/email" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Изменить пароль</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label>Введите новую почту</label>
+                                <input name="newEmail" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Изменить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>

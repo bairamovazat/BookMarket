@@ -1,9 +1,10 @@
 package ru.ivmiit.web.transfer;
 
 import lombok.*;
-import ru.ivmiit.web.model.*;
+import ru.ivmiit.web.model.Book;
 
-import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -28,8 +29,9 @@ public class BookDto {
     private Integer count;
     private Integer rating;
 
+    private List<CommentDto> comments;
 
-    public static BookDto from(Book book){
+    public static BookDto from(Book book) {
         return BookDto.builder()
                 .id(book.getId())
                 .name(book.getName())
@@ -42,6 +44,11 @@ public class BookDto {
                 .price(book.getPrice())
                 .count(book.getCount())
                 .rating(book.getRating())
+                .comments(
+                        book.getComments().stream()
+                                .map(CommentDto::from)
+                                .collect(Collectors.toList())
+                )
                 .build();
 
     }

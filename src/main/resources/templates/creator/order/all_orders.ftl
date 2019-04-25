@@ -6,14 +6,13 @@
 <#include "../../header.ftl">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-1 col-lg-2 col-xs-3">
-
-        </div>
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xs-6">
+        <div class="col-12">
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Пользователь</th>
+                    <th scope="col">Почта</th>
                     <th scope="col">Адрес</th>
                     <th scope="col">Статус</th>
                     <th scope="col">Оплата</th>
@@ -26,6 +25,8 @@
                 <#list model.orders as order>
                 <tr>
                     <th scope="row"><a>${order.id!}</a></th>
+                    <td>${order.user.name!}</td>
+                    <td>${order.user.email!}</td>
                     <td>${order.address!}</td>
                     <td>${order.status!}</td>
                     <td>${order.payAfterDelivery???string("После доставки", "До доставки")}</td>
@@ -69,9 +70,6 @@
                     </li>
                 </ul>
             </nav>
-        </div>
-        <div class="col-md-1 col-lg-2 col-xs-3">
-
         </div>
     </div>
 </div>

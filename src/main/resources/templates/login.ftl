@@ -19,6 +19,11 @@
                         <div class="alert alert-danger" role="alert">Логин или пароль введены неверно</div>
                     </#if>
                 </div>
+                <#if success??>
+                    <div class="form-group">
+                        <div class="alert alert-success" role="alert">${success}</div>
+                    </div>
+                </#if>
                 <div class="form-group">
                     <label for="inputLogin">Введите логин</label>
                     <input name="login" type="text" class="form-control" id="inputLogin" placeholder="Логин">

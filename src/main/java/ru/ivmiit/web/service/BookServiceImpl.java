@@ -9,21 +9,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ivmiit.web.forms.BookForm;
-import ru.ivmiit.web.model.Book;
-import ru.ivmiit.web.model.BookCategory;
-import ru.ivmiit.web.model.File;
-import ru.ivmiit.web.model.Publisher;
+import ru.ivmiit.web.model.*;
 import ru.ivmiit.web.repository.BookCategoryRepository;
 import ru.ivmiit.web.repository.BookRepository;
+import ru.ivmiit.web.repository.CommentRepository;
 import ru.ivmiit.web.repository.PublisherRepository;
 import ru.ivmiit.web.transfer.BookDto;
 import ru.ivmiit.web.utils.TaskUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -46,6 +41,9 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private PublisherRepository publisherRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     private static int paginationPagesCount = 5;
 
@@ -169,6 +167,20 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public List<BookDto> getFictionBooks(){
         return getRandomBooks(4).stream().map(BookDto::from).collect(Collectors.toList());
+    }
+
+    @Override
+    public void sendComment(Long bookId, String text) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Book not found"));
+        User user = authenticationService.getCurrentUser();
+        Comment comment = Comment.builder()
+                .book(book)
+                .text(text)
+                .user(user)
+                .createdDate(new Date())
+                .build();
+
+        commentRepository.save(comment);
     }
 
     public List<Book> getRandomBooks(int count){

@@ -4,6 +4,7 @@ import lombok.*;
 import ru.ivmiit.web.forms.BookForm;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +22,7 @@ public class Book {
     private String name;
     private String author;
     private Integer pageCount;
+
     @ManyToOne
     @JoinColumn(name = "title_file_id")
     private File titlePage;
@@ -32,6 +34,9 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     @Column(length = 1024)
     private String description;

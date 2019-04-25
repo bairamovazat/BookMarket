@@ -138,7 +138,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public List<OrderDto> getAllOrders(int page) {
-        return getCurrentUserOrders(page, defaultElementsInPage);
+        return getAllOrders(page, defaultElementsInPage);
     }
 
     @Override
