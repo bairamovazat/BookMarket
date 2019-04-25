@@ -28,6 +28,7 @@ public class BookDto {
     private Integer count;
     private Integer rating;
 
+
     public static BookDto from(Book book){
         return BookDto.builder()
                 .id(book.getId())

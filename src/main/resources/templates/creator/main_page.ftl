@@ -24,6 +24,9 @@
                 <div class="form-group col-4">
                     <a class="form-control" href="creator/publishers/all">Издательства</a>
                 </div>
+                <div class="form-group col-4">
+                    <a class="form-control" href="creator/discounts/all">Скидки</a>
+                </div>
             </div>
             <div class="row" style="padding-left: 15px">
                 <form class="form-group" action="import/from" method="GET">

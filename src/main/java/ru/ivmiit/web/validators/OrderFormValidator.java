@@ -28,5 +28,10 @@ public class OrderFormValidator implements Validator {
         if(book.isPresent()){
             errors.reject("book", "Количество товаров должно быть больше 0");
         }
+
+
+        if (form.getSaleCode().length() < 3 || form.getSaleCode().length() > 255) {
+            errors.reject("saleCode", "Промокод должнен содержать от 3 до 255 символов");
+        }
     }
 }

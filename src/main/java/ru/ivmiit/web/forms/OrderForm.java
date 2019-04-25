@@ -21,6 +21,8 @@ public class OrderForm {
     private String address;
     private String comment;
 
+    private String saleCode;
+
     public List<OrderBook> getOrderBooksList(){
         return books;
     }

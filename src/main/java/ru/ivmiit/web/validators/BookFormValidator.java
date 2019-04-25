@@ -56,5 +56,7 @@ public class BookFormValidator implements Validator {
         if (form.getRating() <= 0) {
             errors.reject("price", "Рейтинг должен быть больше 0");
         }
+
+
     }
 }
